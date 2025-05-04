@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>情暖老人心--注册</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <!-- <link rel="shortcut icon" href="./favicon.ico"> -->
+  <link rel="stylesheet" href="注册页面2.css">
+  <link rel="stylesheet" href="注册页面1.css">
+</head>
+
+<body>
+  <!-- 项部导航 -->
+  <div class="xtx_topnav">
+    <div class="wrapper">
+      <!-- 顶部导航 -->
+      <ul class="xtx_navs">
+        <li>
+          <a href="3.登录页面.html">请先登录</a>
+        </li>
+        <li>
+          <a href="2.注册页面.html">免费注册</a>
+        </li>
+        <li>
+          <a href="4.服务活动.html">服务活动</a>
+        </li>
+        <li>
+          <a href="5.健康管理.html">健康管理</a>
+        </li>
+        <li>
+          <a href="6.个人中心.html">个人中心</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="xtx-wrapper">
+    <div class="container">
+      <!-- 卡片 -->
+      <div class="xtx-card">
+        <h3>新用户注册</h3>
+        <form class="xtx-form" autocomplete="off">
+          <div data-prop="username" class="xtx-form-item">
+            <span class="iconfont icon-zhanghao"></span>
+            <input required name="username" type="text" placeholder="设置用户名称">
+            <span class="msg"></span>
+          </div>
+          <div data-prop="phone" class="xtx-form-item">
+            <span class="iconfont icon-shouji"></span>
+            <input required name="phone" type="text" placeholder="输入手机号码  ">
+            <span class="msg"></span>
+          </div>
+          <div data-prop="code" class="xtx-form-item">
+            <span class="iconfont icon-zhibiaozhushibiaozhu"></span>
+            <input required name="code" type="text" placeholder="短信验证码">
+            <span class="msg"></span>
+            <a class="code" href="javascript:;">发送验证码</a>
+          </div>
+          <div data-prop="password" class="xtx-form-item">
+            <span class="iconfont icon-suo"></span>
+            <input required name="password" type="password" placeholder="设置6至20位字母、数字和符号组合">
+            <span class="msg"></span>
+          </div>
+          <div data-prop="confirm" class="xtx-form-item">
+            <span class="iconfont icon-suo"></span>
+            <input required name="confirm" type="password" placeholder="请再次输入上面密码">
+            <span class="msg"></span>
+          </div>
+          <!-- <div class="xtx-form-item pl50">
+            <i class="iconfont icon-queren"></i>
+            已阅读并同意<i>《用户服务协议》</i>
+          </div> -->
+          <div class="xtx-form-item">
+            <button class="submit" type="submit">下一步</button>
+            <!-- <a class="submit" href="javascript:;">下一步</a> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公共底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="wrapper">
+      <!-- 联系我们 -->
+      <div class="contact clearfix">
+        <dl>
+          <dt>客户服务</dt>
+          <dd class="chat">
+            <img src="图片/二维码.png" alt="">
+            <p>在线客服</p>
+          </dd>
+          <dd class="feedback">
+            <img src="图片/二维码.png" alt="">
+            <p>问题反馈</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>关注我们</dt>
+          <dd class="weixin">
+            <img src="图片/二维码.png" alt="">
+            <p>公众号</p>
+          </dd>
+          <dd class="weibo">
+            <img src="图片/二维码.png" alt="">
+            <p>微博</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>服务热线</dt>
+          <dd class="hotline">
+            400-0000-000
+            <small>周一至周日 8:00-18:00</small>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- 其它 -->
+    <div class="extra">
+      <div class="wrapper">
+        <!-- 口号 -->
+        <div class="slogan">
+          <a href="javascript:;" class="price">价格亲民</a>
+          <a href="javascript:;" class="express">物流快捷</a>
+          <a href="javascript:;" class="quality">品质新鲜</a>
+        </div>
+        <!-- 版权信息 -->
+        <div class="copyright">
+          <p>
+            <a href="1.首页.html">进入首页</a>
+            <a href="6.个人中心.html">服务活动</a>
+            <a href="7.帮助中心.html">健康管理</a>
+            <a href="javascript:;">个人中心</a>
+          </p>
+          <p>&lt;&nbsp;情暖老人心&nbsp;&gt;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    //1.发送短信验证码
+    const code = document.querySelector('.code')
+    let flag = true
+    //随机六位验证码
+    let yzm = ''
+    function getRandom() {
+      return Math.floor(100000 + Math.random() * 900000).toString()
+    }
+
+    // 验证码获取
+    code.addEventListener('click', async function () {
+      const phoneValue = phone.value.trim()
+
+      if (!verifyPhone()) {
+        alert('请先输入正确的手机号')
+        return
+      }
+
+      if (flag) {
+        flag = false
+        code.disabled = true
+        let i = 60
+        code.innerHTML = `${i}秒后重新获取`
+
+        try {
+          const response = await fetch('http://localhost:3001/api/auth/send-code', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              phone: phoneValue
+            })
+          })
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || '验证码发送失败')
+          }
+
+          const data = await response.json()
+          console.log('验证码发送响应:', data)
+
+          // 开发环境下显示验证码方便测试
+          if (data.code) {
+            alert(`验证码为: ${data.code}`)
+          }
+
+          // 倒计时逻辑
+          const timeid = setInterval(function () {
+            i--
+            code.innerHTML = `${i}秒后重新获取`
+
+            if (i <= 0) {
+              clearInterval(timeid)
+              code.innerHTML = '重新获取'
+              code.disabled = false
+              flag = true
+            }
+          }, 1000)
+
+        } catch (error) {
+          console.error('验证码发送失败:', error)
+          alert(error.message)
+          code.innerHTML = '获取验证码'
+          code.disabled = false
+          flag = true
+        }
+      }
+    })
+
+
+    //2.用户名验证
+    const username = document.querySelector('[name=username]')
+    username.addEventListener('change', verifyName)
+
+    function verifyName() {
+      const span = username.nextElementSibling
+      const value = username.value.trim();
+
+      if (!value) {
+        span.innerHTML = '请输入用户名'
+        return false
+      }
+
+      if (value.length < 2 || value.length > 20) {
+        span.innerHTML = '用户名长度应在2-20个字符之间'
+        return false
+      }
+
+      span.innerHTML = ''
+      return true
+    }
+
+
+    //3.手机号验证
+    const phone = document.querySelector('[name=phone]')
+    phone.addEventListener('change', verifyPhone)
+
+    function verifyPhone() {
+      const span = phone.nextElementSibling
+      const value = phone.value.trim()
+      const reg = /^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/
+
+      if (!value) {
+        span.innerHTML = '请输入手机号'
+        return false
+      }
+
+      if (!reg.test(value)) {
+        span.innerHTML = '请输入正确的手机号格式'
+        return false
+      }
+
+      span.innerHTML = ''
+      return true
+    }
+
+    const codeInput = document.querySelector('[name=code]')
+    codeInput.addEventListener('change', verifycodeInput)
+    // 验证码验证函数
+    function verifycodeInput() {
+      const span = codeInput.nextElementSibling
+      const value = codeInput.value.trim()
+
+      if (!value) {
+        span.innerHTML = '请输入验证码'
+        return false
+      }
+
+      if (!/^\d{6}$/.test(value)) {
+        span.innerHTML = '验证码应为6位数字'
+        return false
+      }
+
+      span.innerHTML = ''
+      return true
+    }
+
+
+
+    //3.密码验证
+    const password = document.querySelector('[name=password]')
+    password.addEventListener('change', verifyPassword)
+
+    function verifyPassword() {
+      const span = password.nextElementSibling
+
+      const value = password.value
+
+      if (!value) {
+        span.innerHTML = '请输入密码'
+        return false
+      }
+
+      if (value.length < 6 || value.length > 20) {
+        span.innerHTML = '密码长度应在6-20个字符之间'
+        return false
+      }
+
+      span.innerHTML = ''
+      return true
+    }
+
+
+    //3.密码再次验证验证
+    const confirm = document.querySelector('[name=confirm]')
+    confirm.addEventListener('change', verifyConfirm)
+
+    function verifyConfirm() {
+      const span = confirm.nextElementSibling
+
+      //密码确认错误
+      if (confirm.value != password.value) {
+        span.innerHTML = '两次密码不一致'
+        return false
+      }
+      //合法
+      span.innerHTML = ''
+      return true
+    }
+
+
+    //5.提交
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async function (e) {
+      // 清空表单提交的默认行为
+      e.preventDefault();
+
+
+      // 每个文本框合法才能注册成功
+      if (!verifyConfirm()) {
+
+        return; // 如果验证失败，直接退出，不进行后续跳转
+      }
+      if (!verifyName()) {
+
+        return; // 如果验证失败，直接退出，不进行后续跳转
+      }
+      if (!verifyPassword()) {
+
+        return; // 如果验证失败，直接退出，不进行后续跳转
+      }
+      if (!verifyPhone()) {
+
+        return; // 如果验证失败，直接退出，不进行后续跳转
+      }
+      if (!verifycodeInput()) {
+
+        return; // 如果验证失败，直接退出，不进行后续跳转
+
+      }
+
+      const userName = document.querySelector('[name=username]').value
+      const phone = document.querySelector('[name=phone]').value
+      const passWord = document.querySelector('[name=password]').value
+      const submitBtn = form.querySelector('.submit')
+      const originalText = submitBtn.textContent
+      // 禁用按钮并显示加载状态
+      submitBtn.disabled = true
+      submitBtn.textContent = '注册中...'
+      try {
+        const formData = {
+          userName: document.querySelector('[name=username]').value.trim(),
+          phone: document.querySelector('[name=phone]').value,
+          password: document.querySelector('[name=password]').value
+        }
+
+        console.log('Submitting:', formData)
+
+        const response = await fetch('http://localhost:3001/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          // 显示更详细的错误信息
+          const errorMsg = data.message ||
+            (data.error && data.error.message) ||
+            '注册失败，请检查输入'
+          throw new Error(errorMsg)
+        }
+
+        // 存储token和用户信息
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('currentUser', JSON.stringify(data.user))
+
+        alert('注册成功！！！')
+        window.location.href = '1.首页.html'
+
+      } catch (error) {
+        console.error('注册失败:', error)
+
+        // 显示更友好的错误提示
+        const errorElement = document.createElement('div')
+        errorElement.className = 'error-message'
+        errorElement.textContent = error.message
+        errorElement.style.color = 'red'
+        errorElement.style.marginTop = '10px'
+
+        // 移除旧的错误信息
+        const oldError = form.querySelector('.error-message')
+        if (oldError) oldError.remove()
+
+        form.appendChild(errorElement)
+
+      } finally {
+        submitBtn.disabled = false
+        submitBtn.textContent = '注册'
+
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

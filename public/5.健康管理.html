@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情暖老人心--健康管理</title>
+  <link rel="stylesheet" href="注册页面2.css">
+  <link rel="stylesheet" href="健康管理.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-3d@latest/dist/chartjs-plugin-3d.min.js"></script>
+</head>
+
+<body>
+  <!-- 项部导航 -->
+  <div class="xtx_topnav">
+    <div class="wrapper">
+      <!-- 顶部导航 -->
+      <ul class="xtx_navs">
+        <li>
+          <a href="3.登录页面.html">请先登录</a>
+        </li>
+        <li>
+          <a href="2.注册页面.html">免费注册</a>
+        </li>
+        <li>
+          <a href="1.首页.html">返回首页</a>
+        </li>
+        <li>
+          <a href="4.服务活动.html">服务活动</a>
+        </li>
+        <li>
+          <a href="5.健康管理.html">健康管理</a>
+        </li>
+        <li>
+          <a href="6.个人中心.html">个人中心</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <h1>健康管理</h1>
+
+    <div class="health-management">
+      <div class="tabs">
+        <div class="tab active" data-tab="data-entry">身体数据记录</div>
+        <div class="tab" data-tab="data-visualization">数据可视化</div>
+        <div class="tab" data-tab="health-details">老人身体详细信息</div>
+        <div class="tab" data-tab="health-timeline">健康时间轴</div>
+        <div class="tab" data-tab="health-prediction">健康趋势预测</div>
+      </div>
+
+      <div class="tab-content">
+        <!-- 身体数据记录 -->
+        <div class="tab-pane active" id="data-entry">
+          <form id="health-form">
+            <div class="form-group">
+              <label for="height">身高 (cm)</label>
+              <input type="number" id="height" step="0.1" min="100" max="250" required>
+            </div>
+
+            <div class="form-group">
+              <label for="weight">体重 (kg)</label>
+              <input type="number" id="weight" step="0.1" min="30" max="200" required>
+            </div>
+
+            <div class="form-group">
+              <label for="blood-sugar">血糖 (mmol/L)</label>
+              <input type="number" id="blood-sugar" step="0.1" min="1" max="30" required>
+            </div>
+
+            <div class="form-group">
+              <label for="blood-pressure">血压 (mmHg)</label>
+              <input type="text" id="blood-pressure" placeholder="格式: 120/80" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cholesterol">胆固醇 (mmol/L)</label>
+              <input type="number" id="cholesterol" step="0.1" min="1" max="10" required>
+            </div>
+
+            <div class="form-group">
+              <label for="heart-rate">心率 (次/分钟)</label>
+              <input type="number" id="heart-rate" min="40" max="200" required>
+            </div>
+
+            <div class="form-group">
+              <label for="vision">视力</label>
+              <input type="text" id="vision" placeholder="例如: 1.0/0.8" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sleep-duration">睡眠时长 (小时)</label>
+              <input type="number" id="sleep-duration" step="0.1" min="0" max="24" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sleep-quality">睡眠质量</label>
+              <select id="sleep-quality" required>
+                <option value="">请选择</option>
+                <option value="优">优</option>
+                <option value="良">良</option>
+                <option value="中">中</option>
+                <option value="差">差</option>
+              </select>
+            </div>
+
+            <button type="button" class="submit-btn" id="submit-btn">提交数据</button>
+          </form>
+        </div>
+
+        <!-- 数据可视化 -->
+        <div class="tab-pane" id="data-visualization">
+          <div id="overall-chart-container" class="chart-container">
+            <h3 class="chart-title">整体健康数据趋势</h3>
+            <canvas id="overall-chart"></canvas>
+          </div>
+
+          <div id="height-chart-container" class="chart-container">
+            <h3 class="chart-title">身高变化 (cm)</h3>
+            <canvas id="height-chart"></canvas>
+          </div>
+
+          <div id="weight-chart-container" class="chart-container">
+            <h3 class="chart-title">体重变化 (kg)</h3>
+            <canvas id="weight-chart"></canvas>
+          </div>
+
+          <div id="blood-sugar-chart-container" class="chart-container">
+            <h3 class="chart-title">血糖变化 (mmol/L)</h3>
+            <canvas id="blood-sugar-chart"></canvas>
+          </div>
+
+          <div id="blood-pressure-chart-container" class="chart-container">
+            <h3 class="chart-title">血压变化 (mmHg)</h3>
+            <canvas id="blood-pressure-chart"></canvas>
+          </div>
+
+          <div id="cholesterol-chart-container" class="chart-container">
+            <h3 class="chart-title">胆固醇变化 (mmol/L)</h3>
+            <canvas id="cholesterol-chart"></canvas>
+          </div>
+
+          <div id="heart-rate-chart-container" class="chart-container">
+            <h3 class="chart-title">心率变化 (次/分钟)</h3>
+            <canvas id="heart-rate-chart"></canvas>
+          </div>
+
+          <div id="vision-chart-container" class="chart-container">
+            <h3 class="chart-title">视力变化</h3>
+            <canvas id="vision-chart"></canvas>
+          </div>
+
+          <div id="sleep-duration-chart-container" class="chart-container">
+            <h3 class="chart-title">睡眠时长变化 (小时)</h3>
+            <canvas id="sleep-duration-chart"></canvas>
+          </div>
+
+          <div id="sleep-quality-chart-container" class="chart-container">
+            <h3 class="chart-title">睡眠质量变化</h3>
+            <canvas id="sleep-quality-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- 老人身体详细信息 -->
+        <div class="tab-pane" id="health-details">
+          <table id="health-records-table">
+            <thead>
+              <tr>
+                <th>记录时间</th>
+                <th>身高(cm)</th>
+                <th>体重(kg)</th>
+                <th>血糖(mmol/L)</th>
+                <th>血压(mmHg)</th>
+                <th>胆固醇(mmol/L)</th>
+                <th>心率</th>
+                <th>视力</th>
+                <th>睡眠时长</th>
+                <th>睡眠质量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 数据将通过JavaScript动态填充 -->
+            </tbody>
+          </table>
+
+          <div class="pagination" id="pagination">
+            <!-- 分页按钮将通过JavaScript动态生成 -->
+          </div>
+
+          <div class="export-container">
+            <button id="export-btn" class="export-btn">数据导出</button>
+          </div>
+        </div>
+
+        <!-- 健康时间轴 -->
+        <div class="tab-pane" id="health-timeline">
+          <div class="timeline-search">
+            <div class="search-group">
+              <label for="timeline-start-date">开始日期</label>
+              <input type="datetime-local" id="timeline-start-date">
+            </div>
+            <div class="search-group">
+              <label for="timeline-end-date">结束日期</label>
+              <input type="datetime-local" id="timeline-end-date">
+            </div>
+            <button id="timeline-search-btn" class="search-btn">搜索</button>
+            <button id="timeline-reset-btn" class="reset-btn">重置</button>
+          </div>
+          <div class="timeline-container">
+            <div class="timeline" id="health-timeline-content">
+              <!-- 时间轴内容将通过JavaScript动态生成 -->
+            </div>
+          </div>
+          <div class="timeline-pagination" id="timeline-pagination">
+            <!-- 分页按钮将通过JavaScript动态生成 -->
+          </div>
+        </div>
+
+        <!-- 健康趋势预测 -->
+        <div class="tab-pane" id="health-prediction">
+          <div class="prediction-controls">
+            <div class="form-group">
+              <label for="prediction-metric">预测指标</label>
+              <select id="prediction-metric">
+                <option value="height">身高</option>
+                <option value="weight">体重</option>
+                <option value="blood_sugar">血糖</option>
+                <option value="blood_pressure">血压</option>
+                <option value="cholesterol">胆固醇</option>
+                <option value="heart_rate">心率</option>
+                <option value="sleep_duration">睡眠时长</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="prediction-days">预测天数</label>
+              <input type="number" id="prediction-days" min="1" max="30" value="7">
+            </div>
+
+            <button id="predict-btn" class="submit-btn">开始预测</button>
+          </div>
+
+          <div id="prediction-chart-container" class="chart-container">
+            <h3 class="chart-title">健康趋势预测</h3>
+            <canvas id="prediction-chart"></canvas>
+          </div>
+
+          <div class="prediction-results">
+            <h3>预测结果分析</h3>
+            <div id="prediction-analysis"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 确认提交的模态框 -->
+  <div class="confirmation-modal" id="confirmation-modal">
+    <div class="modal-content">
+      <h3>请确认提交</h3>
+      <p>您确定要好提交这些健康数据了吗？</p>
+      <div class="modal-buttons">
+        <button id="confirm-yes">是</button>
+        <button id="confirm-no">否</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公共底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="wrapper">
+      <!-- 联系我们 -->
+      <div class="contact clearfix">
+        <dl>
+          <dt>客户服务</dt>
+          <dd class="chat">
+            <img src="图片/二维码.png" alt="">
+            <p>在线客服</p>
+          </dd>
+          <dd class="feedback">
+            <img src="图片/二维码.png" alt="">
+            <p>问题反馈</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>关注我们</dt>
+          <dd class="weixin">
+            <img src="图片/二维码.png" alt="">
+            <p>公众号</p>
+          </dd>
+          <dd class="weibo">
+            <img src="图片/二维码.png" alt="">
+            <p>微博</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>服务热线</dt>
+          <dd class="hotline">
+            400-0000-000
+            <small>周一至周日 8:00-18:00</small>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- 其它 -->
+    <div class="extra">
+      <div class="wrapper">
+        <!-- 口号 -->
+        <div class="slogan">
+          <a href="javascript:;" class="price">价格亲民</a>
+          <a href="javascript:;" class="express">物流快捷</a>
+          <a href="javascript:;" class="quality">品质新鲜</a>
+        </div>
+        <!-- 版权信息 -->
+        <div class="copyright">
+          <p>
+            <a href="5.健康管理.html">返回顶部</a>
+            <a href="1.首页.html">进入首页</a>
+            <a href="4.服务活动.html">服务活动</a>
+            <a href="6.个人中心.html">个人中心</a>
+          </p>
+          <p>&lt;&nbsp;情暖老人心&nbsp;&gt;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script>
+
+  // 全局变量
+  const chartInstances = {}
+  let healthRecords = []
+
+
+  //数据导出
+  function exportToExcel() {
+    if (!healthRecords || healthRecords.length === 0) {
+      alert('没有可导出的数据')
+      return
+    }
+
+    // 创建CSV内容
+    let csvContent = "记录时间,身高(cm),体重(kg),血糖(mmol/L),血压(mmHg),胆固醇(mmol/L),心率(次/分钟),视力,睡眠时长(小时),睡眠质量\n"
+
+    healthRecords.forEach(record => {
+      let formattedDate = '无日期'
+      if (record.created_at) {
+        const date = new Date(record.created_at);
+        formattedDate = date.toISOString().replace('T', ' ').replace(/\..+/, '')
+        formattedDate = date.toLocaleString('zh-CN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        }).replace(/\//g, '-')
+
+      }
+
+      csvContent += `"${formattedDate}",`
+      csvContent += `${record.height || ''},`
+      csvContent += `${record.weight || ''},`
+      csvContent += `${record.blood_sugar || ''},`
+      csvContent += `"${record.blood_pressure || ''}",`
+      csvContent += `${record.cholesterol || ''},`
+      csvContent += `${record.heart_rate || ''},`
+      csvContent += `"${record.vision || ''}",`
+      csvContent += `${record.sleep_duration || ''},`
+      csvContent += `"${record.sleep_quality || ''}"\n`
+    })
+    // 创建下载链接
+    const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.setAttribute('href', url)
+    link.setAttribute('download', `健康数据_${new Date().toLocaleDateString()}.csv`)
+    link.style.visibility = 'hidden'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+
+  function showLoadingState() {
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+      pane.style.opacity = '0.5'
+      pane.style.pointerEvents = 'none'
+    })
+  }
+
+  function hideLoadingState() {
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+      pane.style.opacity = ''
+      pane.style.pointerEvents = ''
+    })
+  }
+
+  function showErrorState(message) {
+    alert(`错误: ${message}`)
+  }
+
+  async function checkLogin() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    const token = localStorage.getItem('token')
+
+    console.log('检查登录状态:', { currentUser, token })
+
+    if (currentUser && token) {
+      try {
+        const response = await fetch('http://localhost:3001/api/profile', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+        return response.ok
+      } catch (error) {
+        console.error('验证请求异常:', error)
+        return false
+      }
+    }
+    return false
+  }
+
+  async function updateLoginUI() {
+    const li1 = document.querySelector('.xtx_navs li:first-child')
+    const li2 = li1.nextElementSibling
+    const token = localStorage.getItem('token')
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+    console.log('当前登录状态:', { token, currentUser })
+
+    if (token && currentUser) {
+      try {
+        const response = await fetch('http://localhost:3001/api/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error('Token无效')
+        }
+
+        const userData = await response.json()
+        console.log('用户数据:', userData)
+
+        li1.innerHTML = `
+       <a href="javascript:;"><i class="iconfont icon-user">${currentUser.userName}</i></a>
+      `
+        li2.innerHTML = '<a href="javascript:;" class="logout-btn">退出登录</a>'
+
+        // 退出登录处理
+        li2.querySelector('a').addEventListener('click', async function () {
+          try {
+            await fetch('http://localhost:3001/api/logout', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            })
+          } catch (error) {
+            console.error('注销请求失败:', error)
+          } finally {
+            localStorage.removeItem('token')
+            localStorage.removeItem('currentUser')
+            location.reload()
+          }
+        })
+
+      } catch (error) {
+        console.error('验证登录状态失败:', error)
+        clearAuthData()
+      }
+    } else {
+      clearAuthData()
+    }
+  }
+
+  function clearAuthData() {
+    const li1 = document.querySelector('.xtx_navs li:first-child')
+    const li2 = li1.nextElementSibling
+    li1.innerHTML = '<a href="3.登录页面.html">请先登录</a>'
+    li2.innerHTML = '<a href="2.注册页面.html">免费注册</a>'
+  }
+
+
+
+  // 用户数据
+  const currentUser = JSON.parse(localStorage.getItem('currentUser')) || null
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    await updateLoginUI()// 优先更新登录状态UI
+    initTabs()
+    initFormSubmit()
+    initCharts()
+
+    // 只有登录时才获取数据
+    if (await checkLogin()) {
+      await fetchHealthData()
+    } else {
+      // 未登录时显示无数据状态
+      updateCharts()
+      updateHealthRecordsTable()
+    }
+
+    // 导出事件
+    document.getElementById('export-btn')?.addEventListener('click', function () {
+      const isLoggedIn = localStorage.getItem('token') && localStorage.getItem('currentUser')
+      if (!isLoggedIn) {
+        alert('请先登录才能导出数据')
+        window.location.href = '3.登录页面.html'
+        return
+      }
+      exportToExcel()
+    })
+
+    document.getElementById('timeline-search-btn')?.addEventListener('click', searchTimeline)
+    document.getElementById('timeline-reset-btn')?.addEventListener('click', resetTimelineSearch)
+  })
+
+
+  // 标签页切换功能
+  function initTabs() {
+    const tabs = document.querySelectorAll('.tab')
+    const tabPanes = document.querySelectorAll('.tab-pane')
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+
+        tabs.forEach(t => t.classList.remove('active'))
+        this.classList.add('active')
+
+        tabPanes.forEach(pane => pane.classList.remove('active'))
+        const tabId = this.getAttribute('data-tab')
+        document.getElementById(tabId).classList.add('active')
+
+        if (tabId === 'data-visualization') {
+          updateCharts();
+        } else if (tabId === 'health-details') {
+          updateHealthRecordsTable();
+        }
+      })
+    })
+  }
+
+
+  // 表单提交功能
+  function initFormSubmit() {
+    const submitBtn = document.getElementById('submit-btn')
+    const confirmationModal = document.getElementById('confirmation-modal')
+    const confirmYes = document.getElementById('confirm-yes')
+    const confirmNo = document.getElementById('confirm-no')
+
+    // 清除之前的事件监听器
+    submitBtn.replaceWith(submitBtn.cloneNode(true))
+    confirmYes.replaceWith(confirmYes.cloneNode(true))
+    confirmNo.replaceWith(confirmNo.cloneNode(true))
+
+    // 获取新的元素引用
+    const newSubmitBtn = document.getElementById('submit-btn')
+    const newConfirmYes = document.getElementById('confirm-yes')
+    const newConfirmNo = document.getElementById('confirm-no')
+
+    newSubmitBtn.addEventListener('click', async function (e) {
+
+      e.preventDefault()
+
+      // 检查登录状态
+      const isLoggedIn = await checkLogin()
+      if (!isLoggedIn) {
+        alert('请先登录才能提交健康数据')
+        window.location.href = '3.登录页面.html'
+        return
+      }
+
+      // 验证表单
+      const form = document.getElementById('health-form')
+      if (!form.checkValidity()) {
+        form.reportValidity()
+        return
+      }
+
+      // 验证血压格式
+      const bloodPressure = document.getElementById('blood-pressure').value
+      if (!/^\d+\/\d+$/.test(bloodPressure)) {
+        alert('请输入正确的血压格式，如120/80')
+        return
+      }
+
+      // 验证视力格式
+      const vision = document.getElementById('vision').value
+      if (!/^\d+\.\d+\/\d+\.\d+$/.test(vision)) {
+        alert('请输入正确的视力格式，如1.0/0.8')
+        return
+      }
+
+      // 检查数据异常
+      const warnings = checkHealthDataWarnings()
+      if (warnings.length > 0) {
+        showDataWarnings(warnings)
+        return
+      }
+
+      // 显示确认对话框
+      confirmationModal.style.display = 'flex'
+      newConfirmNo.addEventListener('click', function () {
+        confirmationModal.style.display = 'none'
+      })
+
+      newConfirmYes.addEventListener('click', async function () {
+
+        confirmationModal.style.display = 'none'
+        await submitHealthData()
+
+        this.onclick = null
+      })
+
+    })
+
+  }
+
+
+  // 检查健康数据异常
+  function checkHealthDataWarnings() {
+    const warnings = []
+
+    // 获取表单值
+    const height = parseFloat(document.getElementById('height').value)
+    const weight = parseFloat(document.getElementById('weight').value)
+    const bloodSugar = parseFloat(document.getElementById('blood-sugar').value)
+    const bloodPressure = document.getElementById('blood-pressure').value
+    const cholesterol = parseFloat(document.getElementById('cholesterol').value)
+    const heartRate = parseInt(document.getElementById('heart-rate').value)
+    const sleepDuration = parseFloat(document.getElementById('sleep-duration').value)
+
+    // 检查各项指标
+    // 计算BMI
+    if (height && weight) {
+      const bmi = weight / ((height / 100) ** 2)
+      if (bmi < 18.5) {
+        warnings.push(`体重过轻: BMI ${bmi.toFixed(1)} (正常范围: 18.5-24)`)
+      } else if (bmi > 24) {
+        warnings.push(`体重超重: BMI ${bmi.toFixed(1)} (正常范围: 18.5-24)`)
+      }
+    }
+
+    if (bloodSugar < 3.9 || bloodSugar > 6.1) {
+      warnings.push(`血糖异常: ${bloodSugar}mmol/L (正常范围: 3.9-6.1mmol/L)`)
+    }
+
+    if (bloodPressure) {
+      const [systolic, diastolic] = bloodPressure.split('/').map(Number)
+      if (systolic < 90 || systolic > 140) {
+        warnings.push(`收缩压异常: ${systolic}mmHg (正常范围: 90-140mmHg)`)
+      }
+      if (diastolic < 60 || diastolic > 90) {
+        warnings.push(`舒张压异常: ${diastolic}mmHg (正常范围: 60-90mmHg)`)
+      }
+    }
+
+    if (cholesterol < 3.0 || cholesterol > 5.2) {
+      warnings.push(`胆固醇异常: ${cholesterol}mmol/L (正常值范围：3.0-5.2mmol/L)`)
+    }
+
+    if (heartRate < 60 || heartRate > 100) {
+      warnings.push(`心率异常: ${heartRate}次/分钟 (正常范围: 60-100次/分钟)`)
+    }
+
+    if (sleepDuration < 6 || sleepDuration > 9) {
+      warnings.push(`睡眠时长异常: ${sleepDuration}小时 (正常范围: 6-9小时)`)
+    }
+
+    return warnings
+  }
+
+
+  // 显示数据异常警告
+  function showDataWarnings(warnings) {
+    const warningModal = document.createElement('div')
+    warningModal.className = 'warning-modal'
+    warningModal.style.position = 'fixed'
+    warningModal.style.top = '0'
+    warningModal.style.left = '0'
+    warningModal.style.width = '100%'
+    warningModal.style.height = '100%'
+    warningModal.style.backgroundColor = 'rgba(0,0,0,0.5)'
+    warningModal.style.display = 'flex'
+    warningModal.style.justifyContent = 'center'
+    warningModal.style.alignItems = 'center'
+    warningModal.style.zIndex = '1000'
+
+    const modalContent = document.createElement('div')
+    modalContent.className = 'modal-content'
+    modalContent.style.backgroundColor = '#fff'
+    modalContent.style.padding = '20px'
+    modalContent.style.borderRadius = '8px'
+    modalContent.style.maxWidth = '600px'
+    modalContent.style.width = '80%'
+
+    const title = document.createElement('h3')
+    title.textContent = '健康数据异常警告'
+    title.style.color = '#e74c3c'
+    title.style.marginBottom = '15px'
+
+    const message = document.createElement('div')
+    message.innerHTML = `
+        <p>以下健康数据超出正常范围，请确认:</p>
+        <ul style="color: #e74c3c; font-size: 20px; font-weight:600; margin: 10px 0 20px; padding-left: 20px;">
+            ${warnings.map(w => `<li>${w}</li>`).join('')}
+        </ul>
+        <p>如果数据正确，可以继续提交，但建议咨询医生。</p>
+    `
+
+    const buttons = document.createElement('div')
+    buttons.style.display = 'flex'
+    buttons.style.justifyContent = 'space-between'
+    buttons.style.paddingBottom = '20px'
+
+    const continueBtn = document.createElement('button')
+    continueBtn.textContent = '继续提交'
+    continueBtn.style.padding = '8px 65px'
+    continueBtn.style.backgroundColor = '#2c7873'
+    continueBtn.style.color = '#fff'
+    continueBtn.style.border = 'none'
+    continueBtn.style.borderRadius = '4px'
+    continueBtn.style.cursor = 'pointer'
+
+    const cancelBtn = document.createElement('button')
+    cancelBtn.textContent = '取消并修改'
+    cancelBtn.style.padding = '8px 55px'
+    cancelBtn.style.backgroundColor = '#e74c3c'
+    cancelBtn.style.color = '#fff'
+    cancelBtn.style.border = 'none'
+    cancelBtn.style.borderRadius = '4px'
+    cancelBtn.style.cursor = 'pointer'
+
+    continueBtn.addEventListener('click', async function () {
+      document.body.removeChild(warningModal)
+      try {
+        await submitHealthData()
+        alert('健康数据提交成功')
+      } catch (error) {
+        console.error('提交失败:', error)
+        alert('提交失败: ' + error.message)
+      }
+    })
+
+    cancelBtn.addEventListener('click', function () {
+      document.body.removeChild(warningModal)
+    })
+
+    buttons.appendChild(cancelBtn)
+    buttons.appendChild(continueBtn)
+
+    modalContent.appendChild(title)
+    modalContent.appendChild(message)
+    modalContent.appendChild(buttons)
+    warningModal.appendChild(modalContent)
+    document.body.appendChild(warningModal)
+  }
+
+
+  //获取健康数据
+  async function fetchHealthData() {
+    try {
+
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+      const token = localStorage.getItem('token')
+
+      // 发起请求
+      const response = await fetch(`http://localhost:3001/api/health`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log('API响应状态:', response.status)
+      // 处理响应
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}))
+        console.error('完整错误响应:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorBody
+        })
+        throw new Error(errorBody.message || `请求失败 (${response.status})`)
+      }
+
+      const result = await response.json()
+
+      // 验证数据结构
+      if (!result || (!result.data && !Array.isArray(result))) {
+        throw new Error('无效的数据结构')
+      }
+
+      // 确保数据格式正确
+      healthRecords = (result.data || result).map(record => ({
+        ...record,
+        blood_pressure: record.blood_pressure || '',
+        vision: record.vision || '',
+        sleep_quality: record.sleep_quality || ''
+      }))
+
+      updateCharts()
+      updateHealthRecordsTable()
+      return healthRecords
+
+    } catch (error) {
+      console.error('获取健康数据失败:', error)
+      showErrorState(error.message)
+      throw error
+    } finally {
+      hideLoadingState()
+    }
+  }
+
+
+
+  // 健康数据提交
+  async function submitHealthData() {
+    if (!checkLogin()) return
+
+    try {
+      showLoadingState()
+
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+      const form = document.getElementById('health-form')
+
+      if (!form.checkValidity()) {
+        form.reportValidity()
+        return
+      }
+      const healthData = {
+        userId: currentUser.id,
+        height: parseFloat(document.getElementById('height').value),
+        weight: parseFloat(document.getElementById('weight').value),
+        bloodSugar: parseFloat(document.getElementById('blood-sugar').value),
+        bloodPressure: document.getElementById('blood-pressure').value,
+        cholesterol: parseFloat(document.getElementById('cholesterol').value),
+        heartRate: parseInt(document.getElementById('heart-rate').value),
+        vision: document.getElementById('vision').value,
+        sleepDuration: parseFloat(document.getElementById('sleep-duration').value),
+        sleepQuality: document.getElementById('sleep-quality').value
+      }
+      console.log('准备提交的数据:', healthData)
+
+      const response = await fetch('http://localhost:3001/api/health', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(healthData)
+      })
+      console.log('API响应:', response)
+
+      const result = await response.json()
+      console.log('API结果:', result)
+      if (!response.ok) {
+        throw new Error(result.message || '提交失败')
+      }
+
+      alert('健康数据提交成功')
+      form.reset()
+      await fetchHealthData()
+
+      // 更新所有视图
+      updateCharts()
+      updateHealthRecordsTable()
+      updateHealthTimeline()
+
+    } catch (error) {
+      console.error('提交失败:', error)
+      showErrorState('提交失败: ' + error.message)
+    } finally {
+      hideLoadingState()
+    }
+
+  }
+
+
+
+  // 初始化图表
+  function initCharts() {
+    // 销毁所有现有图表
+    Object.values(chartInstances).forEach(chart => {
+      if (chart) chart.destroy()
+    })
+
+    // 创建所有图表
+    createChart('overall-chart', 'line', [], [], '整体健康数据趋势', true) // 3D参数
+    createChart('height-chart', 'bar', [], [], '身高 (cm)', true)
+    createChart('weight-chart', 'bar', [], [], '体重 (kg)', true)
+    createChart('blood-sugar-chart', 'line', [], [], '血糖 (mmol/L)')
+    createChart('blood-pressure-chart', 'line', [], [], '血压 (mmHg)')
+    createChart('cholesterol-chart', 'line', [], [], '胆固醇 (mmol/L)')
+    createChart('heart-rate-chart', 'line', [], [], '心率 (次/分钟)')
+    createChart('vision-chart', 'line', [], [], '视力')
+    createChart('sleep-duration-chart', 'bar', [], [], '睡眠时长 (小时)', true)
+    createChart('sleep-quality-chart', 'bar', [], [], '睡眠质量(4-优，3-良，2-中，1-差)', true)
+    createChart('prediction-chart', 'line', [], [], '预测值', true)
+    // 初始更新图表
+    updateCharts()
+  }
+
+
+  // 创建图表
+  function createChart(id, type, labels, data, label, enable3D = false) {
+    const ctx = document.getElementById(id).getContext('2d')
+
+    const config = {
+      type: type,
+      data: {
+        labels: labels,
+        datasets: [{
+          label: label,
+          data: data,
+          backgroundColor: type === 'bar' ? 'rgba(44, 120, 115, 0.7)' : 'rgba(44, 120, 115, 0.2)',
+          borderColor: 'rgba(44, 120, 115, 1)',
+          borderWidth: 2,
+          tension: 0.1,
+          fill: type === 'line'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleFont: {
+              size: 16
+            },
+            bodyFont: {
+              size: 14
+            },
+            padding: 12,
+            cornerRadius: 8
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            grid: {
+              color: 'rgba(0, 0, 0, 0.05)'
+            },
+            ticks: {
+              font: {
+                size: 12
+              }
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                size: 12
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // 3D效果配置
+    if (enable3D) {
+      config.options.plugins['3d'] = {
+        enabled: true,
+        alpha: 25,
+        beta: 30,
+        depth: 20,
+        viewDistance: 50,
+        fit: true,
+        frame: {
+          bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
+          back: { size: 1, color: 'rgba(0,0,0,0.04)' },
+          side: { size: 1, color: 'rgba(0,0,0,0.06)' }
+        }
+      }
+    }
+
+    config.data.datasets[0].backgroundColor = 'rgba(44, 120, 115, 0.5)'
+    config.data.datasets[0].borderColor = 'rgba(44, 120, 115, 1)'
+    config.data.datasets[0].borderWidth = 1
+
+    // 添加动画效果
+    config.options.animation = {
+      duration: 2000,
+      easing: 'easeOutQuart',
+      onComplete: function () {
+        const chart = this
+        const ctx = chart.ctx
+        ctx.font = Chart.helpers.fontString(12, 'bold', Chart.defaults.font.family)
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'bottom'
+        ctx.fillStyle = '#333'
+
+        this.data.datasets.forEach((dataset, i) => {
+          const meta = chart.getDatasetMeta(i)
+          meta.data.forEach((bar, index) => {
+            const data = dataset.data[index]
+            if (data !== null && data !== undefined) {
+              ctx.fillText(data, bar.x, bar.y - 5)
+            }
+          })
+        })
+      }
+    }
+
+
+    chartInstances[id] = new Chart(ctx, config)
+  }
+
+
+  // 更新图表数据
+  function updateCharts() {
+    if (!healthRecords || healthRecords.length === 0) {
+      // 如果没有数据，显示提示
+      document.querySelectorAll('.chart-container').forEach(container => {
+        if (!container.querySelector('.no-data-message')) {
+          const message = document.createElement('p')
+          message.className = 'no-data-message'
+          message.textContent = '暂无健康数据'
+          message.style.textAlign = 'center'
+          message.style.color = '#888'
+          message.style.marginTop = '20px'
+          container.appendChild(message)
+        }
+      })
+      // 同时更新时间轴的空状态
+      const timelineContainer = document.getElementById('health-timeline-content')
+      if (timelineContainer && !timelineContainer.querySelector('.no-data')) {
+        timelineContainer.innerHTML = '<p class="no-data" style="text-align: center; padding: 20px; color: #888;">暂无健康数据</p>'
+      }
+
+      return
+    }
+
+    // 移除无数据提示
+    document.querySelectorAll('.no-data-message').forEach(el => el.remove())
+    document.querySelectorAll('.no-data').forEach(el => el.remove())
+    // 按时间降序排序，获取最近的8条记录
+    const sortedRecords = [...healthRecords].sort((a, b) => {
+      const dateA = new Date(a.created_at || 0)
+      const dateB = new Date(b.created_at || 0)
+      return dateB - dateA
+    })
+    const records = sortedRecords.slice(0, 8)// 取最近的8条
+    const labels = records.map(r => {
+      try {
+        return new Date(r.created_at).toLocaleDateString()
+      } catch (e) {
+        console.error('日期格式错误:', r.created_at)
+        return '未知日期'
+      }
+    })
+    // 更新整体图表（平均值）
+    updateOverallChart(records, labels)
+
+    // 更新各个单项图表
+    updateSingleChart('height-chart', records, labels, 'height', '身高 (cm)')
+    updateSingleChart('weight-chart', records, labels, 'weight', '体重 (kg)')
+    updateSingleChart('blood-sugar-chart', records, labels, 'blood_sugar', '血糖 (mmol/L)')
+    updateSingleChart('blood-pressure-chart', records, labels, 'blood_pressure', '血压 (mmHg)')
+    updateSingleChart('cholesterol-chart', records, labels, 'cholesterol', '胆固醇 (mmol/L)')
+    updateSingleChart('heart-rate-chart', records, labels, 'heart_rate', '心率 (次/分钟)')
+    updateSingleChart('vision-chart', records, labels, 'vision', '视力')
+    updateSingleChart('sleep-duration-chart', records, labels, 'sleep_duration', '睡眠时长 (小时)')
+    updateSingleChart('sleep-quality-chart', records, labels, 'sleep_quality', '睡眠质量', 'bar')
+
+    updateHealthTimeline()
+  }
+
+
+  // 更新整体图表（平均值）
+  function updateOverallChart(records, labels) {
+    // 计算各项指标的平均值（标准化到0-1范围）
+    const normalizedData = records.map(record => {
+      let sum = 0
+      let count = 0
+
+      // 处理每个字段，添加验证
+      if (record.height) {
+        sum += record.height / 200// 假设最大身高200cm
+        count++
+      }
+
+      if (record.weight) {
+        sum += record.weight / 100 // 假设最大体重100kg
+        count++
+      }
+
+      if (record.blood_sugar) {
+        sum += record.blood_sugar / 10 // 假设最大血糖10mmol/L
+        count++
+      }
+
+      // 处理血压
+      if (record.blood_pressure && record.blood_pressure.includes('/')) {
+        const bp = record.blood_pressure.split('/')
+        if (bp.length === 2 && !isNaN(bp[0])) {
+          sum += parseInt(bp[0]) / 200 // 收缩压
+          sum += parseInt(bp[1]) / 120// 舒张压
+          count += 2
+        }
+      }
+
+      if (record.cholesterol) {
+        sum += record.cholesterol / 6 // 假设最大胆固醇6mmol/L
+        count++
+      }
+
+      if (record.heart_rate) {
+        sum += record.heart_rate / 150 // 假设最大心率150
+        count++
+      }
+
+      // 处理视力
+      if (record.vision && record.vision.includes('/')) {
+        const vision = record.vision.split('/')
+        if (vision.length === 2 && !isNaN(vision[0])) {
+          sum += parseFloat(vision[0]) // 左眼视力
+          sum += parseFloat(vision[1])// 右眼视力
+          count += 2
+        }
+      }
+
+      if (record.sleep_duration) {
+        sum += record.sleep_duration / 12 // 假设最大睡眠时长12小时
+        count++
+      }
+
+      // 睡眠质量映射为数值
+      if (record.sleep_quality) {
+        let sleepQualityValue = 0
+        switch (record.sleep_quality) {
+          case '优': sleepQualityValue = 1; break;
+          case '良': sleepQualityValue = 0.75; break;
+          case '中': sleepQualityValue = 0.5; break;
+          case '差': sleepQualityValue = 0.25; break;
+          default: sleepQualityValue = 0;
+        }
+        sum += sleepQualityValue
+        count++
+      }
+
+      return count > 0 ? sum / count : 0
+    })
+
+    // 更新图表数据
+    chartInstances['overall-chart'].data.labels = labels
+    chartInstances['overall-chart'].data.datasets[0].data = normalizedData
+    chartInstances['overall-chart'].update()
+  }
+
+
+  // 更新单项图表
+  function updateSingleChart(chartId, records, labels, property, label, type = 'line') {
+    let data = []
+    try {
+      if (property === 'blood_pressure') {
+        // 特殊处理血压数据
+        data = records.map(r => {
+          if (!r.blood_pressure || !r.blood_pressure.includes('/')) return null
+          const bp = r.blood_pressure.split('/')
+          if (bp.length !== 2) return null
+          return (parseInt(bp[0]) + parseInt(bp[1])) / 2
+        })
+      } else if (property === 'vision') {
+        // 特殊处理视力数据
+        data = records.map(r => {
+          if (!r.vision || !r.vision.includes('/')) return null
+          const vision = r.vision.split('/')
+          return (parseFloat(vision[0]) + parseFloat(vision[1])) / 2
+        })
+      } else if (property === 'sleep_quality') {
+        // 特殊处理睡眠质量数据
+        data = records.map(r => {
+          if (!r.sleep_quality) return null
+          switch (r.sleep_quality) {
+            case '优': return 4
+            case '良': return 3
+            case '中': return 2
+            case '差': return 1
+            default: return 0
+          }
+        })
+      } else {
+        data = records.map(r => r[property] || null)
+      }
+
+      // 更新图表
+      if (chartInstances[chartId]) {
+        chartInstances[chartId].data.labels = labels
+        chartInstances[chartId].data.datasets[0].data = data
+        // 添加异常点标记
+        chartInstances[chartId].data.datasets[0].pointBackgroundColor = data.map(value => {
+          if (value === null) return 'rgba(0, 0, 0, 0.1)'
+
+          // 检查是否为异常值
+          const record = records[data.indexOf(value)]
+          if (!record) return 'rgba(44, 120, 115, 1)'
+
+          const isAbnormal = checkValueForAbnormality(property, value, record)
+          return isAbnormal ? '#e74c3c' : 'rgba(44, 120, 115, 1)'
+        })
+
+        chartInstances[chartId].update()
+      }
+    } catch (error) {
+      console.error(`更新图表 ${chartId} 失败:`, error)
+    }
+  }
+
+
+  // 检查记录中的异常数据
+  function checkRecordForAbnormalities(record) {
+    const result = {
+      height: false,
+      weight: false,
+      blood_sugar: false,
+      blood_pressure: false,
+      cholesterol: false,
+      heart_rate: false,
+      sleep_duration: false
+    }
+
+    //检查BMI
+    if (record.weight && record.height) {
+      const bmi = record.weight / ((record.height / 100) ** 2)
+      if (bmi < 18.5 || bmi > 24) {
+        result.weight = true
+      }
+    }
+
+    // 检查血糖
+    if (record.blood_sugar !== undefined && record.blood_sugar !== null) {
+      if (record.blood_sugar < 3.9 || record.blood_sugar > 6.1) {
+        result.blood_sugar = true
+      }
+    }
+
+    // 检查血压
+    if (record.blood_pressure && record.blood_pressure.includes('/')) {
+      const [systolic, diastolic] = record.blood_pressure.split('/').map(Number)
+      if (systolic < 90 || systolic > 140 || diastolic < 60 || diastolic > 90) {
+        result.blood_pressure = true
+      }
+    }
+
+    // 检查胆固醇
+    if (record.cholesterol !== undefined && record.cholesterol !== null) {
+      if (record.cholesterol < 3.0 || record.cholesterol > 5.2) {
+        result.cholesterol = true
+      }
+    }
+
+    // 检查心率
+    if (record.heart_rate !== undefined && record.heart_rate !== null) {
+      if (record.heart_rate < 60 || record.heart_rate > 130) {
+        result.heart_rate = true
+      }
+    }
+
+    // 检查睡眠时长
+    if (record.sleep_duration !== undefined && record.sleep_duration !== null) {
+      if (record.sleep_duration < 5 || record.sleep_duration > 14) {
+        result.sleep_duration = true
+      }
+    }
+
+    return result
+  }
+
+
+  // 检查单个值是否异常
+  function checkValueForAbnormality(property, value, record) {
+    if (value === null) return false
+
+    switch (property) {
+      case 'weight':
+        if (!record.height) return false
+        const bmi = value / ((record.height / 100) ** 2)
+        return bmi < 18.5 || bmi > 24
+      case 'blood_sugar':
+        return value < 3.9 || value > 6.1
+      case 'blood_pressure':
+        if (!record.blood_pressure || !record.blood_pressure.includes('/')) return false
+        const [systolic, diastolic] = record.blood_pressure.split('/').map(Number)
+        return systolic < 90 || systolic > 140 || diastolic < 60 || diastolic > 90
+      case 'cholesterol':
+        return value > 5.2
+      case 'heart_rate':
+        return value < 60 || value > 100
+      case 'sleep_duration':
+        return value < 6 || value > 9
+      default:
+        return false
+    }
+  }
+
+
+  // 更新健康记录表格
+  function updateHealthRecordsTable() {
+    const tableBody = document.querySelector('#health-records-table tbody')
+    const pagination = document.getElementById('pagination')
+
+    // 清空表格和分页
+    tableBody.innerHTML = ''
+    pagination.innerHTML = ''
+
+    if (!healthRecords || healthRecords.length === 0) {
+      const row = document.createElement('tr')
+      row.innerHTML = '<td colspan="10" class="no-data">暂无健康数据</td>'
+      tableBody.appendChild(row)
+      return
+    }
+
+    // 分页设置
+    const recordsPerPage = 8
+    const totalPages = Math.ceil(healthRecords.length / 8)
+    let currentPage = 1
+
+    // 显示数据函数
+    function displayPage(page) {
+      currentPage = page
+      tableBody.innerHTML = ''
+
+      const start = (page - 1) * 8
+      const end = Math.min(start + 8, healthRecords.length)
+
+      for (let i = start; i < end; i++) {
+        const record = healthRecords[i]
+        const row = document.createElement('tr')
+
+        // 检查每条记录的异常数据
+        const isAbnormal = checkRecordForAbnormalities(record)
+
+        row.innerHTML = `
+    <td>${record.created_at ? new Date(record.created_at).toLocaleString() : '无日期'}</td>
+    <td class="${isAbnormal.height ? 'abnormal-data' : ''}">${record.height || '无数据'}</td>
+    <td class="${isAbnormal.weight ? 'abnormal-data' : ''}">${record.weight || '无数据'}</td>
+    <td class="${isAbnormal.blood_sugar ? 'abnormal-data' : ''}">${record.blood_sugar || '无数据'}</td>
+    <td class="${isAbnormal.blood_pressure ? 'abnormal-data' : ''}">${record.blood_pressure || '无数据'}</td>
+    <td class="${isAbnormal.cholesterol ? 'abnormal-data' : ''}">${record.cholesterol || '无数据'}</td>
+    <td class="${isAbnormal.heart_rate ? 'abnormal-data' : ''}">${record.heart_rate || '无数据'}</td>
+    <td>${record.vision || '无数据'}</td>
+    <td class="${isAbnormal.sleep_duration ? 'abnormal-data' : ''}">${record.sleep_duration || '无数据'}</td>
+    <td>${record.sleep_quality || '无数据'}</td>
+`
+        tableBody.appendChild(row)
+      }
+
+      // 更新分页按钮状态
+      updatePaginationButtons()
+    }
+
+    // 创建分页按钮
+    function createPagination() {
+      // 上一页按钮
+      const prevButton = document.createElement('button')
+      prevButton.textContent = '上一页'
+      prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+          displayPage(currentPage - 1)
+        }
+      })
+      pagination.appendChild(prevButton)
+
+      // 页码按钮
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button')
+        pageButton.textContent = i
+        if (i === currentPage) {
+          pageButton.classList.add('active')
+        }
+        pageButton.addEventListener('click', () => displayPage(i))
+        pagination.appendChild(pageButton)
+      }
+
+      // 下一页按钮
+      const nextButton = document.createElement('button')
+      nextButton.textContent = '下一页'
+      nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          displayPage(currentPage + 1)
+        }
+      })
+      pagination.appendChild(nextButton)
+    }
+
+    // 更新分页按钮状态
+    function updatePaginationButtons() {
+      const buttons = pagination.querySelectorAll('button')
+      buttons.forEach((button, index) => {
+        if (index === 0) {
+          // 上一页按钮
+          button.disabled = currentPage === 1
+        } else if (index === buttons.length - 1) {
+          // 下一页按钮
+          button.disabled = currentPage === totalPages
+        } else {
+          // 页码按钮
+          if (parseInt(button.textContent) === currentPage) {
+            button.classList.add('active')
+          } else {
+            button.classList.remove('active')
+          }
+        }
+      })
+    }
+
+    // 初始显示第一页
+    displayPage(1)
+    createPagination()
+  }
+
+
+  // 时间轴更新函数
+  function updateHealthTimeline() {
+    const timelineContainer = document.getElementById('health-timeline-content')
+    const paginationContainer = document.getElementById('timeline-pagination')
+    timelineContainer.innerHTML = ''
+    paginationContainer.innerHTML = ''
+
+    // 使用过滤后的数据或原始数据
+    const recordsToDisplay = filteredTimelineRecords.length > 0 ? filteredTimelineRecords : [...healthRecords]
+
+    if (!recordsToDisplay || recordsToDisplay.length === 0) {
+      timelineContainer.innerHTML = '<p class="no-data" style="text-align: center; padding: 20px; color: #888;">没有数据记录哦</p>'
+      return
+    }
+
+    // 按日期降序排序
+    const sortedRecords = recordsToDisplay.sort((a, b) => {
+      const dateA = new Date(a.created_at || 0)
+      const dateB = new Date(b.created_at || 0)
+      return dateB - dateA
+    })
+    // 分页处理
+    const totalPages = Math.ceil(sortedRecords.length / timelineRecordsPerPage)
+    const startIndex = (currentTimelinePage - 1) * timelineRecordsPerPage
+    const endIndex = Math.min(startIndex + timelineRecordsPerPage, sortedRecords.length)
+    const paginatedRecords = sortedRecords.slice(startIndex, endIndex)
+
+    // 生成时间轴内容
+    paginatedRecords.forEach((record, index) => {
+      const timelineItem = document.createElement('div')
+      timelineItem.className = `timeline-item ${index % 2 === 0 ? 'left' : 'right'}`
+
+      let dateStr = '无日期'
+      try {
+        dateStr = record.created_at ? new Date(record.created_at).toLocaleString('zh-CN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }) : '无日期'
+      } catch (e) {
+        console.error('日期格式错误:', record.created_at)
+      }
+
+      const timelineContent = document.createElement('div')
+      timelineContent.className = 'timeline-content'
+
+      const dateElement = document.createElement('div')
+      dateElement.className = 'timeline-date'
+      dateElement.textContent = dateStr
+
+      const dataElement = document.createElement('div')
+      dataElement.className = 'timeline-data'
+
+      // 检查异常数据
+      const isAbnormal = checkRecordForAbnormalities(record)
+
+      // 添加各项健康数据，异常值显示为红色
+      addDataItemIfExists(dataElement, '身高', record.height, 'cm', isAbnormal.height)
+      addDataItemIfExists(dataElement, '体重', record.weight, 'kg', isAbnormal.weight)
+      addDataItemIfExists(dataElement, '血糖', record.blood_sugar, 'mmol/L', isAbnormal.blood_sugar)
+      addDataItemIfExists(dataElement, '血压', record.blood_pressure, 'mmHg', isAbnormal.blood_pressure)
+      addDataItemIfExists(dataElement, '胆固醇', record.cholesterol, 'mmol/L', isAbnormal.cholesterol)
+      addDataItemIfExists(dataElement, '心率', record.heart_rate, '次/分钟', isAbnormal.heart_rate)
+      addDataItemIfExists(dataElement, '视力', record.vision, '', false)
+      addDataItemIfExists(dataElement, '睡眠时长', record.sleep_duration, '小时', isAbnormal.sleep_duration)
+      addDataItemIfExists(dataElement, '睡眠质量', record.sleep_quality, '', false)
+
+
+      timelineContent.appendChild(dateElement)
+      timelineContent.appendChild(dataElement)
+      timelineItem.appendChild(timelineContent)
+      timelineContainer.appendChild(timelineItem)
+    })
+
+    // 生成分页按钮
+    if (totalPages > 1) {
+      // 上一页按钮
+      const prevButton = document.createElement('button')
+      prevButton.textContent = '上一页'
+      prevButton.disabled = currentTimelinePage === 1
+      prevButton.addEventListener('click', () => {
+        if (currentTimelinePage > 1) {
+          currentTimelinePage--
+          updateHealthTimeline()
+        }
+      })
+      paginationContainer.appendChild(prevButton)
+
+      // 页码按钮
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button')
+        pageButton.textContent = i
+        pageButton.className = `page-btn ${currentTimelinePage === i ? 'active' : ''}`
+        pageButton.addEventListener('click', () => {
+          currentTimelinePage = i
+          updateHealthTimeline()
+        })
+        paginationContainer.appendChild(pageButton)
+      }
+
+      // 下一页按钮
+      const nextButton = document.createElement('button')
+      nextButton.textContent = '下一页'
+      nextButton.className = 'page-btn'
+      nextButton.disabled = currentTimelinePage === totalPages
+      nextButton.addEventListener('click', () => {
+        if (currentTimelinePage < totalPages) {
+          currentTimelinePage++
+          updateHealthTimeline()
+        }
+      })
+      paginationContainer.appendChild(nextButton)
+    }
+  }
+
+
+  function addDataItemIfExists(container, label, value, unit = '', isAbnormal = false) {
+    if (value !== undefined && value !== null && value !== '') {
+      const item = document.createElement('div')
+      item.className = 'timeline-data-item'
+
+      const labelSpan = document.createElement('span')
+      labelSpan.className = 'timeline-data-label'
+      labelSpan.textContent = label
+
+      const valueSpan = document.createElement('span')
+      valueSpan.className = 'timeline-data-value'
+      if (isAbnormal) {
+        valueSpan.classList.add('abnormal-value')
+      }
+      valueSpan.textContent = `${value} ${unit}`.trim()
+
+      item.appendChild(labelSpan)
+      item.appendChild(valueSpan)
+      container.appendChild(item)
+    }
+  }
+
+
+  function createDataItem(label, value) {
+    const item = document.createElement('div')
+    item.className = 'timeline-data-item'
+
+    const labelSpan = document.createElement('span')
+    labelSpan.className = 'timeline-data-label'
+    labelSpan.textContent = label
+
+    const valueSpan = document.createElement('span')
+    valueSpan.className = 'timeline-data-value'
+    valueSpan.textContent = value
+
+    item.appendChild(labelSpan)
+    item.appendChild(valueSpan)
+
+    return item
+  }
+
+
+  // 预测功能
+  document.getElementById('predict-btn')?.addEventListener('click', function () {
+    const metric = document.getElementById('prediction-metric').value
+    const days = parseInt(document.getElementById('prediction-days').value)
+
+    if (!healthRecords || healthRecords.length < 3) {
+      alert('至少需要3条历史数据才能进行预测')
+      return
+    }
+
+    predictHealthTrend(metric, days)
+  })
+
+
+  // 预测算法 - 使用线性回归和移动平均结合的方法
+  function predictHealthTrend(metric, days) {
+    // 准备历史数据
+    const sortedRecords = [...healthRecords].sort((a, b) => {
+      const dateA = new Date(a.created_at || 0)
+      const dateB = new Date(b.created_at || 0)
+      return dateA - dateB
+    });
+
+    // 提取有效数据点
+    const dataPoints = []
+    sortedRecords.forEach(record => {
+      if (record[metric] !== undefined && record[metric] !== null) {
+        let value
+
+        // 特殊处理血压和视力
+        if (metric === 'blood_pressure' && record.blood_pressure && record.blood_pressure.includes('/')) {
+          const bp = record.blood_pressure.split('/')
+          value = (parseInt(bp[0]) + parseInt(bp[1])) / 2
+        } else if (metric === 'vision' && record.vision && record.vision.includes('/')) {
+          const vision = record.vision.split('/')
+          value = (parseFloat(vision[0]) + parseFloat(vision[1])) / 2
+        } else {
+          value = parseFloat(record[metric])
+        }
+
+        if (!isNaN(value)) {
+          dataPoints.push({
+            date: new Date(record.created_at),
+            value: value
+          })
+        }
+      }
+    })
+
+    if (dataPoints.length < 3) {
+      alert(`没有足够的历史${getMetricName(metric)}数据进行预测`)
+      return
+    }
+
+    // 计算日期序列
+    const dates = dataPoints.map(point => point.date)
+    const lastDate = new Date(Math.max(...dates))
+    const futureDates = []
+    for (let i = 1; i <= days; i++) {
+      const newDate = new Date(lastDate)
+      newDate.setDate(newDate.getDate() + i)
+      futureDates.push(newDate)
+    }
+
+    // 计算移动平均
+    const windowSize = Math.min(3, dataPoints.length)
+    const movingAverages = []
+    for (let i = windowSize - 1; i < dataPoints.length; i++) {
+      let sum = 0
+      for (let j = 0; j < windowSize; j++) {
+        sum += dataPoints[i - j].value
+      }
+      movingAverages.push(sum / windowSize)
+    }
+
+    // 线性回归预测
+    const xValues = dataPoints.map((_, index) => index)
+    const yValues = dataPoints.map(point => point.value)
+
+    const regression = linearRegression(xValues, yValues)
+    const predictions = []
+
+    for (let i = 0; i < days; i++) {
+      const x = dataPoints.length + i
+      let prediction = regression.slope * x + regression.intercept
+
+      // 结合移动平均趋势
+      if (movingAverages.length > 0) {
+        const lastMA = movingAverages[movingAverages.length - 1]
+        const maTrend = movingAverages.length > 1 ?
+          (movingAverages[movingAverages.length - 1] - movingAverages[movingAverages.length - 2]) : 0
+
+        prediction = (prediction * 0.6) + (lastMA + maTrend * (i + 1)) * 0.4
+      }
+
+      // 确保预测值在合理范围内
+      prediction = applyMetricConstraints(metric, prediction)
+      predictions.push(prediction)
+    }
+
+    // 更新图表
+    updatePredictionChart(dataPoints, futureDates, predictions, metric)
+
+    // 显示分析结果
+    displayPredictionAnalysis(metric, predictions, dataPoints)
+  }
+
+
+  // 线性回归计算
+  function linearRegression(x, y) {
+    const n = x.length
+    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0
+
+    for (let i = 0; i < n; i++) {
+      sumX += x[i]
+      sumY += y[i]
+      sumXY += x[i] * y[i]
+      sumXX += x[i] * x[i]
+    }
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+    const intercept = (sumY - slope * sumX) / n
+
+    return { slope, intercept }
+  }
+
+
+  // 更新预测图表
+  function updatePredictionChart(dataPoints, futureDates, predictions, metric) {
+    const allDates = [
+      ...dataPoints.map(point => point.date.toLocaleDateString()),
+      ...futureDates.map(date => date.toLocaleDateString())
+    ]
+
+    const allValues = [
+      ...dataPoints.map(point => point.value),
+      ...predictions
+    ]
+
+    const ctx = document.getElementById('prediction-chart').getContext('2d')
+
+    // 如果图表已存在，销毁它
+    if (chartInstances['prediction-chart']) {
+      chartInstances['prediction-chart'].destroy()
+    }
+
+    // 创建新的3D预测图表
+    chartInstances['prediction-chart'] = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: allDates,
+        datasets: [
+          {
+            label: '历史数据',
+            data: dataPoints.map(point => point.value),
+            borderColor: '#2c7873',
+            backgroundColor: 'rgba(44, 120, 115, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: '预测数据',
+            data: [
+              ...Array(dataPoints.length).fill(null),
+              ...predictions
+            ],
+            borderColor: '#ff6b6b',
+            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+            borderWidth: 2,
+            borderDash: [5, 5],
+            fill: true,
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          title: {
+            display: true,
+            text: `${getMetricName(metric)}趋势预测`,
+            font: {
+              size: 16
+            }
+          },
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14
+              }
+            }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleFont: {
+              size: 16
+            },
+            bodyFont: {
+              size: 14
+            },
+            padding: 12,
+            cornerRadius: 8
+          },
+          '3d': {
+            enabled: true,
+            alpha: 15,
+            beta: 15,
+            depth: 50,
+            viewDistance: 25,
+            frame: {
+              bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
+              back: { size: 1, color: 'rgba(0,0,0,0.04)' },
+              side: { size: 1, color: 'rgba(0,0,0,0.06)' }
+            }
+          }
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: getMetricUnit(metric)
+            },
+            beginAtZero: false
+          },
+          x: {
+            title: {
+              display: true,
+              text: '日期'
+            }
+          }
+        },
+        elements: {
+          point: {
+            radius: 4,
+            hoverRadius: 6
+          }
+        }
+      }
+    })
+  }
+
+
+  // 显示预测分析
+  function displayPredictionAnalysis(metric, predictions, historicalData) {
+    const container = document.getElementById('prediction-analysis')
+    const metricName = getMetricName(metric)
+    const lastValue = historicalData[historicalData.length - 1].value
+    const avgValue = historicalData.reduce((sum, point) => sum + point.value, 0) / historicalData.length
+    const predictionChange = ((predictions[predictions.length - 1] - lastValue) / lastValue * 100).toFixed(1)
+
+    let analysis = `
+        <div class="analysis-item">
+            <h4>${metricName}预测分析</h4>
+            <p>当前值: <strong>${lastValue.toFixed(1)} ${getMetricUnit(metric)}</strong></p>
+            <p>历史平均值: <strong>${avgValue.toFixed(1)} ${getMetricUnit(metric)}</strong></p>
+            <p>预测${predictions.length}天后: <strong>${predictions[predictions.length - 1].toFixed(1)} ${getMetricUnit(metric)}</strong></p>
+            <p>变化趋势: <strong style="color: ${predictionChange >= 0 ? '#e74c3c' : '#2ecc71'}">${predictionChange}%</strong></p>
+        </div>
+    `
+
+    // 添加健康建议
+    const suggestion = getHealthSuggestion(metric, predictions[predictions.length - 1])
+    if (suggestion) {
+      analysis += `
+            <div class="health-suggestion">
+                <h4>健康建议</h4>
+                <p>${suggestion}</p>
+            </div>
+        `
+    }
+
+    container.innerHTML = analysis
+  }
+
+
+  // 获取指标名称
+  function getMetricName(metric) {
+    const names = {
+      height: '身高',
+      weight: '体重',
+      blood_sugar: '血糖',
+      blood_pressure: '血压',
+      cholesterol: '胆固醇',
+      heart_rate: '心率',
+      sleep_duration: '睡眠时长'
+    }
+    return names[metric] || metric
+  }
+
+
+  // 获取指标单位
+  function getMetricUnit(metric) {
+    const units = {
+      height: 'cm',
+      weight: 'kg',
+      blood_sugar: 'mmol/L',
+      blood_pressure: 'mmHg',
+      cholesterol: 'mmol/L',
+      heart_rate: '次/分钟',
+      sleep_duration: '小时'
+    }
+    return units[metric] || ''
+  }
+
+
+  // 应用指标约束
+  function applyMetricConstraints(metric, value) {
+    const constraints = {
+      height: { min: 100, max: 250 },
+      weight: { min: 30, max: 200 },
+      blood_sugar: { min: 1, max: 30 },
+      blood_pressure: { min: 60, max: 220 }, // 收缩压
+      cholesterol: { min: 1, max: 10 },
+      heart_rate: { min: 40, max: 200 },
+      sleep_duration: { min: 0, max: 24 }
+    }
+
+    if (constraints[metric]) {
+      return Math.max(constraints[metric].min, Math.min(constraints[metric].max, value))
+    }
+    return value
+  }
+
+
+  // 获取健康建议
+  function getHealthSuggestion(metric, predictedValue) {
+    const suggestions = {
+      blood_sugar: (value) => {
+        if (value < 3.9) return '预测血糖偏低，建议增加碳水化合物摄入，避免空腹运动。'
+        if (value > 6.1 && value <= 7.8) return '预测血糖略高，建议控制饮食，减少糖分摄入，适当运动。'
+        if (value > 7.8) return '预测血糖明显偏高，建议就医检查，严格控制饮食和药物治疗。'
+        return '预测血糖在正常范围内，保持健康饮食和规律运动。'
+      },
+      blood_pressure: (value) => {
+        if (value < 90) return '预测血压偏低，建议增加水分摄入，避免突然站立。'
+        if (value > 140 && value <= 160) return '预测血压偏高，建议减少盐分摄入，保持规律运动。'
+        if (value > 160) return '预测血压明显偏高，建议立即就医检查，可能需要调整药物。'
+        return '预测血压在正常范围内，保持健康生活方式。'
+      },
+      cholesterol: (value) => {
+        if (value > 5.2) return '预测胆固醇偏高，建议减少饱和脂肪摄入，增加膳食纤维。'
+        return '预测胆固醇在正常范围内，保持均衡饮食。'
+      },
+      heart_rate: (value) => {
+        if (value < 60) return '预测心率偏慢，如有头晕症状建议就医检查。'
+        if (value > 100) return '预测心率偏快，建议减少咖啡因摄入，练习深呼吸放松。'
+        return '预测心率在正常范围内，保持适度运动。'
+      },
+      sleep_duration: (value) => {
+        if (value < 6) return '预测睡眠时间不足，建议建立规律的睡眠时间表，睡前避免使用电子设备。'
+        if (value > 9) return '预测睡眠时间过长，可能与健康问题相关，建议咨询医生。'
+        return '预测睡眠时间充足，保持良好睡眠习惯。'
+      },
+      weight: (value) => {
+        const height = 178
+        const bmi = value / ((height / 100) ** 2)
+        if (bmi < 18.5) return '预测体重偏轻，建议增加营养摄入，进行适度力量训练。'
+        if (bmi > 24) return '预测体重超重，建议控制饮食热量，增加有氧运动。'
+        return '预测体重在正常范围内，保持均衡饮食和规律运动。'
+      }
+    }
+
+    return suggestions[metric]?.(predictedValue) || ''
+  }
+
+
+  let filteredTimelineRecords = []
+  let currentTimelinePage = 1
+  const timelineRecordsPerPage = 5
+
+  function searchTimeline() {
+    const startDateValue = document.getElementById('timeline-start-date').value
+    const endDateValue = document.getElementById('timeline-end-date').value
+
+    // 如果没有输入任何搜索条件，显示全部数据
+    if (!startDateValue && !endDateValue) {
+      filteredTimelineRecords = []
+      currentTimelinePage = 1
+      updateHealthTimeline()
+      return
+    }
+
+    const startDate = startDateValue ? new Date(startDateValue) : null
+    const endDate = endDateValue ? new Date(endDateValue) : null
+
+    // 检查日期有效性
+    if (startDate && isNaN(startDate.getTime())) {
+      alert('开始日期格式无效')
+      return
+    }
+    if (endDate && isNaN(endDate.getTime())) {
+      alert('结束日期格式无效')
+      return
+    }
+
+    // 检查日期范围
+    if (startDate && endDate && startDate > endDate) {
+      alert('开始日期不能晚于结束日期')
+      return
+    }
+
+    // 过滤记录
+    filteredTimelineRecords = healthRecords.filter(record => {
+      if (!record.created_at) return false
+
+      const recordDate = new Date(record.created_at)
+
+      // 检查是否在日期范围内
+      const afterStart = !startDate || recordDate >= startDate
+      const beforeEnd = !endDate || recordDate <= endDate
+
+      return afterStart && beforeEnd
+    })
+
+    // 如果没有找到匹配的记录
+    if (filteredTimelineRecords.length === 0) {
+      const timelineContainer = document.getElementById('health-timeline-content')
+      timelineContainer.innerHTML = '<p class="no-data" style="text-align: center; padding: 20px; color: #888;">没有数据记录哦</p>'
+      document.getElementById('timeline-pagination').innerHTML = ''
+      return
+    }
+
+    currentTimelinePage = 1
+    updateHealthTimeline()
+  }
+
+
+  function resetTimelineSearch() {
+    document.getElementById('timeline-start-date').value = ''
+    document.getElementById('timeline-end-date').value = ''
+    filteredTimelineRecords = []
+    currentTimelinePage = 1
+    updateHealthTimeline()
+  }
+
+</script>
+
+</html>

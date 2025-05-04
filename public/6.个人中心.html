@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情暖老人心--个人中心</title>
+  <link rel="stylesheet" href="注册页面2.css">
+  <link rel="stylesheet" href="个人中心.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+
+<body>
+  <!-- 项部导航 -->
+  <div class="xtx_topnav">
+    <div class="wrapper">
+      <!-- 顶部导航 -->
+      <ul class="xtx_navs">
+        <li>
+          <a href="3.登录页面.html">请先登录</a>
+        </li>
+        <li>
+          <a href="2.注册页面.html">免费注册</a>
+        </li>
+        <li>
+          <a href="1.首页.html">返回首页</a>
+        </li>
+        <li>
+          <a href="4.服务活动.html">服务活动</a>
+        </li>
+        <li>
+          <a href="5.健康管理.html">健康管理</a>
+        </li>
+        <li>
+          <a href="6.个人中心.html">个人中心</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>个人中心</h1>
+
+    <div class="profile-container">
+      <div class="side-tabs">
+        <div class="tab active" data-tab="my-info">我的信息</div>
+        <div class="tab" data-tab="edit-info">修改信息</div>
+        <div class="tab" data-tab="medication">用药记录</div>
+        <div class="tab" data-tab="delete-account">注销账号</div>
+      </div>
+
+      <div class="tab-content">
+        <!-- 我的信息 -->
+        <div class="tab-pane active" id="my-info">
+          <div id="my-info-content">
+            <!-- 内容将通过JavaScript动态填充 -->
+          </div>
+        </div>
+
+        <!-- 修改信息 -->
+        <div class="tab-pane" id="edit-info">
+          <form id="edit-form">
+            <!-- 表单内容将通过JavaScript动态填充 -->
+          </form>
+        </div>
+
+        <!-- 用药提醒 -->
+        <div class="tab-pane" id="medication">
+          <div class="medication-container">
+            <div class="medication-header">
+              <h3>我的药品</h3>
+              <button id="add-medication" class="primary-btn">添加药品</button>
+            </div>
+            <!-- 药品编辑模态框 -->
+            <div class="modal" id="medication-modal">
+              <div class="modal-content">
+                <h3 id="medication-modal-title">添加药品</h3>
+                <form id="medication-form">
+                  <div class="form-group">
+                    <label for="med-name">药品名称*</label>
+                    <input type="text" id="med-name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="med-purpose">用途</label>
+                    <input type="text" id="med-purpose">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="med-dosage">剂量*</label>
+                    <input type="text" id="med-dosage" required placeholder="如：1片">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="med-frequency">频次*</label>
+                    <select id="med-frequency" required>
+                      <option value="">请选择</option>
+                      <option value="每日1次">每日1次</option>
+                      <option value="每日2次">每日2次</option>
+                      <option value="每日3次">每日3次</option>
+                      <option value="每日4次">每日4次</option>
+                      <option value="按需服用">按需服用</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="times-container">
+                    <label for="med-times">时间*</label>
+                    <input type="text" id="med-times" required placeholder="如：08:00,12:00,18:00">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="med-method">用药方式*</label>
+                    <select id="med-method" required>
+                      <option value="">请选择</option>
+                      <option value="口服">口服</option>
+                      <option value="外用">外用</option>
+                      <option value="注射">注射</option>
+                      <option value="其他">其他</option>
+                    </select>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="med-start-date">开始日期*</label>
+                      <input type="date" id="med-start-date" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="med-end-date">结束日期</label>
+                      <input type="date" id="med-end-date">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="med-notes">备注</label>
+                    <textarea id="med-notes" rows="3"></textarea>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="button" id="cancel-medication" class="cancel-btn">取消</button>
+                    <button type="submit" id="save-medication" class="primary-btn">保存</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- 用药记录模态框 -->
+            <div class="modal" id="medication-log-modal">
+              <div class="modal-content">
+                <h3>记录用药情况</h3>
+                <div class="medication-info">
+                  <h4 id="log-med-name"></h4>
+                  <p>剂量: <span id="log-med-dosage"></span></p>
+                  <p>时间: <span id="log-scheduled-time"></span></p>
+                </div>
+
+                <div class="form-group">
+                  <label>状态*</label>
+                  <div class="radio-group">
+                    <label><input type="radio" name="log-status" value="已服" checked> 已服</label>
+                    <label><input type="radio" name="log-status" value="跳过"> 跳过</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="log-notes">备注</label>
+                  <textarea id="log-notes" rows="3"></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" id="cancel-log" class="cancel-btn">取消</button>
+                  <button type="button" id="save-log" class="primary-btn">保存记录</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 提醒通知 -->
+            <div class="notification" id="medication-notification">
+              <div class="notification-content">
+                <h3>用药提醒</h3>
+                <p id="notification-message"></p>
+                <div class="notification-buttons">
+                  <button id="confirm-taken">已服用</button>
+                  <button id="skip-dose">跳过</button>
+                  <button id="snooze-reminder">稍后提醒</button>
+                </div>
+              </div>
+            </div>
+            <div class="medication-list" id="medication-list">
+              <!-- 药品列表将通过JavaScript动态填充 -->
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 注销账号 -->
+        <div class="tab-pane" id="delete-account">
+          <div id="delete-account-content">
+            <p style="text-align: center; margin-top: 50px; font-size: 18px;">
+              您确定要注销账号吗？此操作不可逆，所有数据将被永久删除。
+            </p>
+            <div style="display: flex; justify-content: center; margin-top: 30px; gap: 20px;">
+              <button id="confirm-delete" style="background-color: #e74c3c;">确认注销</button>
+              <button id="cancel-delete">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 修改成功模态框 -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content">
+      <h3>修改成功</h3>
+      <p>您的个人信息已成功更新！</p>
+      <div class="modal-buttons">
+        <button id="success-ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 未登录提示模态框 -->
+  <div class="modal" id="login-prompt-modal">
+    <div class="modal-content">
+      <div class="login-prompt">
+        <p>您尚未登录，请先登录或注册</p>
+        <div class="login-prompt-buttons">
+          <button id="go-to-login">登录</button>
+          <button id="go-to-register">注册</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公共底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="wrapper">
+      <!-- 联系我们 -->
+      <div class="contact clearfix">
+        <dl>
+          <dt>客户服务</dt>
+          <dd class="chat">
+            <img src="图片/二维码.png" alt="">
+            <p>在线客服</p>
+          </dd>
+          <dd class="feedback">
+            <img src="图片/二维码.png" alt="">
+            <p>问题反馈</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>关注我们</dt>
+          <dd class="weixin">
+            <img src="图片/二维码.png" alt="">
+            <p>公众号</p>
+          </dd>
+          <dd class="weibo">
+            <img src="图片/二维码.png" alt="">
+            <p>微博</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>服务热线</dt>
+          <dd class="hotline">
+            400-0000-000
+            <small>周一至周日 8:00-18:00</small>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- 其它 -->
+    <div class="extra">
+      <div class="wrapper">
+        <!-- 口号 -->
+        <div class="slogan">
+          <a href="javascript:;" class="price">价格亲民</a>
+          <a href="javascript:;" class="express">物流快捷</a>
+          <a href="javascript:;" class="quality">品质新鲜</a>
+        </div>
+        <!-- 版权信息 -->
+        <div class="copyright">
+          <p>
+            <a href="6.个人中心.html">返回顶部</a>
+            <a href="1.首页.html">进入首页</a>
+            <a href="4.服务活动.html">服务活动</a>
+            <a href="5.健康管理.html">健康管理</a>
+          </p>
+          <p>&lt;&nbsp;情暖老人心&nbsp;&gt;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<script>
+  const API_BASE_URL = 'http://localhost:3001/api/auth'
+  const MEDICATION_API_BASE_URL = 'http://localhost:3001/api/auth/medications'
+
+  // 退出登录操作
+  async function updateLoginUI() {
+    const li1 = document.querySelector('.xtx_navs li:first-child')
+    const li2 = li1.nextElementSibling
+    const token = localStorage.getItem('token')
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+    if (token && currentUser) {
+      try {
+        const response = await fetch(`${API_BASE_URL}/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error('Token无效')
+        }
+
+        const userData = await response.json()
+
+        li1.innerHTML = `
+          <a href="javascript:;"><i class="iconfont icon-user">${userData.userName || currentUser.userName}</i></a>
+        `
+        li2.innerHTML = '<a href="javascript:;" class="logout-btn">退出登录</a>'
+
+        // 更新本地存储中的当前用户信息
+        localStorage.setItem('currentUser', JSON.stringify(userData))
+
+        // 退出登录处理
+        li2.querySelector('a').addEventListener('click', async function () {
+          try {
+            await fetch(`${API_BASE_URL}/logout`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            })
+          } catch (error) {
+            console.error('注销请求失败:', error)
+          } finally {
+            localStorage.removeItem('token')
+            localStorage.removeItem('currentUser')
+            location.reload()
+          }
+        })
+
+      } catch (error) {
+        console.error('验证登录状态失败:', error)
+        clearAuthData()
+      }
+    } else {
+      clearAuthData()
+    }
+  }
+
+  function clearAuthData() {
+    const li1 = document.querySelector('.xtx_navs li:first-child')
+    const li2 = li1.nextElementSibling
+    li1.innerHTML = '<a href="3.登录页面.html">请先登录</a>'
+    li2.innerHTML = '<a href="2.注册页面.html">免费注册</a>'
+  }
+
+  // 获取当前用户
+  let currentUser = JSON.parse(localStorage.getItem('currentUser')) || {}
+  const users = JSON.parse(localStorage.getItem('users')) || []
+
+  // 初始化页面
+  document.addEventListener('DOMContentLoaded', function () {
+    initTabs()
+    loadUserData()
+    updateLoginUI()
+    initMedicationTab()
+  })
+
+  // 标签页切换功能
+  function initTabs() {
+    const tabs = document.querySelectorAll('.tab')
+    const tabPanes = document.querySelectorAll('.tab-pane')
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        // 检查用户是否登录
+        const token = localStorage.getItem('token')
+        if (!token && this.getAttribute('data-tab') !== 'my-info') {
+          document.getElementById('login-prompt-modal').style.display = 'flex'
+          return
+        }
+
+        // 更新标签状态
+        tabs.forEach(t => t.classList.remove('active'))
+        this.classList.add('active')
+
+        // 更新内容面板
+        tabPanes.forEach(pane => pane.classList.remove('active'))
+        const tabId = this.getAttribute('data-tab')
+        document.getElementById(tabId).classList.add('active')
+
+        // 根据标签加载不同内容
+        if (tabId === 'my-info') {
+          loadUserData()
+        } else if (tabId === 'edit-info') {
+          loadEditForm()
+        }
+      })
+    })
+  }
+
+  // 加载用户数据（我的信息页面）
+  async function loadUserData() {
+    const myInfoContent = document.getElementById('my-info-content')
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      showNotLoggedInContent(myInfoContent)
+      return
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/profile`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      if (!response.ok) {
+        // 如果token无效，清除本地存储
+        if (response.status === 401) {
+          clearAuthData()
+        }
+        throw new Error('获取用户信息失败')
+      }
+
+      const userData = await response.json()
+      // 确保currentUser有必要的字段
+      currentUser = {
+        ...currentUser,
+        ...userData,
+        userName: userData.userName || userData.phone // 确保有用户名
+      }
+      localStorage.setItem('currentUser', JSON.stringify(currentUser))
+
+      myInfoContent.innerHTML = `
+    <div class="form-group">
+      <label>用户名</label>
+      <div class="readonly-input">${currentUser.userName || '未设置'}</div>
+    </div>
+    <div class="form-group">
+      <label>手机号</label>
+      <div class="readonly-input">${currentUser.phone || '未设置'}</div>
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <div class="readonly-input">********</div>
+    </div>
+    <div class="form-group">
+      <label>姓名</label>
+      <div class="readonly-input">${currentUser.fullName || '未设置'}</div>
+    </div>
+    <div class="form-group">
+      <label>性别</label>
+      <div class="readonly-input">${currentUser.gender || '未设置'}</div>
+    </div>
+    <div class="form-group">
+      <label>年龄</label>
+      <div class="readonly-input">${currentUser.age || '未设置'}</div>
+    </div>
+    <div class="form-group">
+      <label>爱好</label>
+      <div class="readonly-input">${currentUser.hobbies || '未设置'}</div>
+    </div>
+  `
+    } catch (error) {
+      console.error('获取用户信息错误:', error)
+      showNotLoggedInContent(myInfoContent)
+    }
+  }
+
+
+  async function saveAdditionalInfo() {
+    const form = document.getElementById('additional-info-form')
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
+    const updatedData = {
+      fullName: document.getElementById('full-name').value,
+      gender: document.getElementById('gender').value,
+      age: document.getElementById('age').value,
+      hobbies: document.getElementById('hobbies').value
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(updatedData)
+      })
+
+      if (!response.ok) {
+        throw new Error(await response.text() || '保存附加信息失败')
+      }
+
+      const result = await response.json()
+      currentUser = {
+        ...currentUser,
+        ...result.user
+      }
+      localStorage.setItem('currentUser', JSON.stringify(currentUser))
+
+      // 重新加载用户数据
+      loadUserData()
+    } catch (error) {
+      console.error('保存附加信息错误:', error)
+      alert('保存失败: ' + error.message)
+    }
+  }
+
+
+  function showNotLoggedInContent(container) {
+    container.innerHTML = `
+      <div class="no-data">
+        <p>您尚未登录，无法查看个人信息</p>
+        <div style="display: flex; justify-content: center; margin-top: 20px; gap: 20px;">
+          <button id="show-login-prompt" style="padding: 10px 20px;">登录</button>
+          <button id="show-register-prompt" style="padding: 10px 20px;">注册</button>
+        </div>
+      </div>
+    `
+
+    document.getElementById('show-login-prompt').addEventListener('click', function () {
+      window.location.href = '3.登录页面.html'
+    })
+
+    document.getElementById('show-register-prompt').addEventListener('click', function () {
+      window.location.href = '2.注册页面.html'
+    })
+  }
+
+
+
+  // 加载编辑表单（修改信息页面）
+  function loadEditForm() {
+    const editForm = document.getElementById('edit-form')
+
+    editForm.innerHTML = `
+      <div class="form-group">
+        <label for="edit-username">用户名</label>
+        <input type="text" id="edit-username" value="${currentUser.userName || ''}" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="edit-phone">手机号</label>
+        <input type="tel" id="edit-phone" value="${currentUser.phone || ''}" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="edit-password">密码</label>
+        <input type="password" id="edit-password" placeholder="输入新密码，留空则不修改">
+      </div>
+      
+      <div class="form-group">
+        <label for="edit-full-name">姓名</label>
+        <input type="text" id="edit-full-name" value="${currentUser.fullName || ''}">
+      </div>
+      <div class="form-group">
+        <label for="edit-gender">性别</label>
+        <select id="edit-gender">
+          <option value="">请选择</option>
+          <option value="男" ${currentUser.gender === '男' ? 'selected' : ''}>男</option>
+          <option value="女" ${currentUser.gender === '女' ? 'selected' : ''}>女</option>
+          <option value="其他" ${currentUser.gender === '其他' ? 'selected' : ''}>其他</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="edit-age">年龄</label>
+        <input type="number" id="edit-age" value="${currentUser.age || ''}" min="1" max="120">
+      </div>
+      
+      <div class="form-group">
+        <label for="edit-hobbies">爱好</label>
+        <input type="text" id="edit-hobbies" value="${currentUser.hobbies || ''}" placeholder="多个爱好用逗号分隔">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="submit-btn" id="confirm-edit">确认修改</button>
+       <button type="button" class="cancel-btn" id="cancel-edit">取消</button>
+    </div>
+      </div>
+    `
+
+    document.getElementById('confirm-edit').addEventListener('click', updateUserInfo)
+    document.getElementById('cancel-edit').addEventListener('click', function () {
+      document.querySelector('.tab[data-tab="my-info"]').click()
+    })
+  }
+
+  // 更新用户信息
+  async function updateUserInfo() {
+    try {
+      const form = document.getElementById('edit-form')
+      if (!form.checkValidity()) {
+        form.reportValidity()
+        return
+      }
+
+      const updatedData = {
+        userName: document.getElementById('edit-username').value,
+        phone: document.getElementById('edit-phone').value,
+        fullName: document.getElementById('edit-full-name').value,
+        gender: document.getElementById('edit-gender').value,
+        age: document.getElementById('edit-age').value,
+        hobbies: document.getElementById('edit-hobbies').value
+      }
+
+      const password = document.getElementById('edit-password').value
+      if (password) {
+        updatedData.password = password
+      }
+
+
+      const response = await fetch(`${API_BASE_URL}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(updatedData)
+      })
+
+      // 首先检查响应内容类型
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text()
+        throw new Error(`服务器返回了非JSON响应: ${text.substring(0, 100)}...`)
+      }
+
+      const responseData = await response.json()
+
+      if (!response.ok) {
+        throw new Error(responseData.message || '更新用户信息失败')
+      }
+
+      currentUser = {
+        ...currentUser,
+        ...responseData.user
+      }
+      localStorage.setItem('currentUser', JSON.stringify(currentUser))
+
+      document.getElementById('success-modal').style.display = 'flex'
+      document.querySelector('.tab[data-tab="my-info"]').click()
+    } catch (error) {
+      console.error('更新用户信息错误:', error)
+      alert(`更新失败: ${error.message}\n请检查控制台获取更多信息`)
+    }
+  }
+
+
+
+  // 注销账号
+  document.getElementById('confirm-delete').addEventListener('click', async function () {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('未找到认证令牌，请重新登录')
+      }
+
+      const response = await fetch(`${API_BASE_URL}/profile`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.message || '注销账号失败')
+      }
+
+      // 清除本地存储并跳转
+      localStorage.removeItem('token')
+      localStorage.removeItem('currentUser')
+      window.location.href = '1.首页.html'
+
+    } catch (error) {
+      console.error('注销账号错误详情:', error)
+      alert(`注销失败: ${error.message}`)
+      // 如果是认证问题，强制退出登录
+      if (error.message.includes('token') || error.message.includes('认证')) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('currentUser')
+        window.location.reload()
+      }
+    }
+  })
+
+
+
+  document.getElementById('cancel-delete').addEventListener('click', function () {
+    document.querySelector('.tab[data-tab="my-info"]').click()
+  })
+
+  // 模态框按钮事件
+  document.getElementById('success-ok').addEventListener('click', function () {
+    document.getElementById('success-modal').style.display = 'none'
+    loadUserData()
+  })
+
+  document.getElementById('go-to-login').addEventListener('click', function () {
+    window.location.href = '3.登录页面.html'
+  })
+
+  document.getElementById('go-to-register').addEventListener('click', function () {
+    window.location.href = '2.注册页面.html'
+  })
+
+
+  // 用药提醒功能
+  let currentMedicationId = null
+  let currentScheduledTime = null
+
+  // 初始化用药提醒功能
+  function initMedicationTab() {
+    // 添加药品按钮
+    document.getElementById('add-medication').addEventListener('click', () => {
+      showMedicationModal()
+    })
+
+    // 药品表单提交
+    document.getElementById('medication-form').addEventListener('submit', (e) => {
+      e.preventDefault()
+      saveMedication()
+    })
+
+    // 取消按钮
+    document.getElementById('cancel-medication').addEventListener('click', () => {
+      document.getElementById('medication-modal').style.display = 'none'
+    })
+
+    // 加载药品列表
+    loadMedications()
+
+
+    // 通知按钮事件
+    document.getElementById('confirm-taken').addEventListener('click', () => {
+      recordMedicationStatus('已服')
+      document.getElementById('medication-notification').style.display = 'none'
+    })
+
+    document.getElementById('skip-dose').addEventListener('click', () => {
+      recordMedicationStatus('跳过')
+      document.getElementById('medication-notification').style.display = 'none'
+    })
+
+
+    document.getElementById('cancel-log').addEventListener('click', () => {
+      document.getElementById('medication-log-modal').style.display = 'none'
+    })
+
+    document.getElementById('save-log').addEventListener('click', async () => {
+      const status = document.querySelector('input[name="log-status"]:checked').value
+      const notes = document.getElementById('log-notes').value
+
+      try {
+        const token = localStorage.getItem('token')
+        if (!token) {
+          throw new Error('请先登录')
+        }
+
+        const response = await fetch(`${MEDICATION_API_BASE_URL}/${currentMedicationId}/logs`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            scheduled_time: currentScheduledTime,
+            status: status,
+            notes: notes
+          })
+        })
+
+        if (!response.ok) {
+          throw new Error('记录用药情况失败')
+        }
+
+        document.getElementById('medication-log-modal').style.display = 'none'
+        alert('记录已保存')
+      } catch (error) {
+        console.error('记录用药情况错误:', error)
+        alert('记录失败: ' + error.message)
+      }
+    })
+  }
+
+
+  // 显示药品模态框
+  function showMedicationModal(medication = null) {
+    const modal = document.getElementById('medication-modal')
+    const title = document.getElementById('medication-modal-title')
+
+    if (medication) {
+      title.textContent = '编辑药品'
+      currentMedicationId = medication.id
+
+      // 填充表单
+      document.getElementById('med-name').value = medication.name
+      document.getElementById('med-purpose').value = medication.purpose || ''
+      document.getElementById('med-dosage').value = medication.dosage
+      document.getElementById('med-frequency').value = medication.frequency
+      document.getElementById('med-times').value = medication.times
+      document.getElementById('med-method').value = medication.method
+      document.getElementById('med-start-date').value = medication.start_date
+      document.getElementById('med-end-date').value = medication.end_date || ''
+      document.getElementById('med-notes').value = medication.notes || ''
+    } else {
+      title.textContent = '添加药品'
+      currentMedicationId = null
+
+      // 清空表单
+      document.getElementById('medication-form').reset()
+      document.getElementById('med-start-date').valueAsDate = new Date()
+    }
+
+    modal.style.display = 'flex'
+  }
+
+
+  // 保存药品
+  async function saveMedication() {
+    const form = document.getElementById('medication-form')
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
+    const medicationData = {
+      name: document.getElementById('med-name').value,
+      purpose: document.getElementById('med-purpose').value,
+      dosage: document.getElementById('med-dosage').value,
+      frequency: document.getElementById('med-frequency').value,
+      times: document.getElementById('med-times').value,
+      method: document.getElementById('med-method').value,
+      start_date: document.getElementById('med-start-date').value,
+      end_date: document.getElementById('med-end-date').value || null,
+      notes: document.getElementById('med-notes').value
+    }
+
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('请先登录')
+      }
+
+      const url = currentMedicationId
+        ? `${MEDICATION_API_BASE_URL}/${currentMedicationId}`
+        : `${MEDICATION_API_BASE_URL}`
+
+      const method = currentMedicationId ? 'PUT' : 'POST'
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(medicationData)
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || '保存失败')
+      }
+
+      const result = await response.json()
+      document.getElementById('medication-modal').style.display = 'none'
+
+      // 重新加载药品列表和提醒
+      loadMedications()
+
+    } catch (error) {
+      console.error('保存药品错误:', error)
+      alert('保存失败: ' + error.message)
+    }
+  }
+
+
+  // 加载药品列表
+  async function loadMedications() {
+    const medicationList = document.getElementById('medication-list')
+    medicationList.innerHTML = '<p>加载中...</p>'
+
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        medicationList.innerHTML = '<p>请先登录查看药品</p>'
+        return
+      }
+
+      const response = await fetch(`${MEDICATION_API_BASE_URL}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('获取药品列表失败')
+      }
+
+      const medications = await response.json()
+
+      if (medications.length === 0) {
+        medicationList.innerHTML = '<p>暂无药品，点击"添加药品"按钮添加</p>'
+        return
+      }
+
+      medicationList.innerHTML = ''
+
+      medications.forEach(med => {
+        const medCard = document.createElement('div')
+        medCard.className = 'medication-card'
+
+        medCard.innerHTML = `
+    <h4>${med.name}</h4>
+    <div class="medication-meta">
+        ${med.purpose ? `<p><strong>用途:</strong> ${med.purpose}</p>` : ''}
+        <p><strong>剂量:</strong> ${med.dosage}</p>
+        <p><strong>频次:</strong> ${med.frequency}</p>
+        <p><strong>时间:</strong> ${med.times}</p>
+        <p><strong>方式:</strong> ${med.method}</p>
+        <p><strong>周期:</strong> ${formatDateForInput(med.start_date)} 至 ${med.end_date ? formatDateForInput(med.end_date) : '长期'}</p>
+    </div>
+    ${med.notes ? `<p><strong>备注:</strong> ${med.notes}</p>` : ''}
+    <div class="medication-actions">
+        <button class="edit-btn" data-id="${med.id}">编辑</button>
+        <button class="delete-btn" data-id="${med.id}">删除</button>
+        <button class="log-btn" data-id="${med.id}">记录</button>
+    </div>
+`
+
+        medicationList.appendChild(medCard)
+      })
+
+      // 添加按钮事件
+      document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const medId = btn.getAttribute('data-id')
+          await loadMedicationForEdit(medId)
+        })
+      })
+
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const medId = btn.getAttribute('data-id')
+          if (confirm('确定要删除这个药品吗？')) {
+            deleteMedication(medId)
+          }
+        })
+      })
+
+      document.querySelectorAll('.log-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const medId = btn.getAttribute('data-id')
+          showLogModal(medId)
+        })
+      })
+
+    } catch (error) {
+      console.error('加载药品列表错误:', error)
+      medicationList.innerHTML = `<p>加载失败: ${error.message}</p>`
+    }
+  }
+
+
+  // 加载单个药品用于编辑
+  async function loadMedicationForEdit(medId) {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('请先登录')
+      }
+
+      const response = await fetch(`${MEDICATION_API_BASE_URL}/${medId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (response.status === 404) {
+        throw new Error('药品未找到，可能已被删除')
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.message || '获取药品信息失败')
+      }
+
+      const medication = await response.json()
+
+      // 确保数据格式正确
+      if (!medication.id || !medication.name) {
+        throw new Error('无效的药品数据格式')
+      }
+
+      // 确保日期格式正确
+      if (medication.start_date) {
+        medication.start_date = formatDateForInput(medication.start_date)
+      }
+      if (medication.end_date) {
+        medication.end_date = formatDateForInput(medication.end_date)
+      }
+
+      showMedicationModal(medication)
+    } catch (error) {
+      console.error('加载药品错误:', error)
+      alert(`加载失败: ${error.message}`)
+      // 重新加载药品列表
+      loadMedications()
+    }
+  }
+
+
+  // 日期格式化辅助函数
+  function formatDateForInput(dateString) {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return date.toISOString().split('T')[0]
+  }
+
+
+  // 删除药品
+  async function deleteMedication(medId) {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('请先登录')
+      }
+
+      const response = await fetch(`${MEDICATION_API_BASE_URL}/${medId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('删除药品失败')
+      } app.use('/api/auth/medications', authMiddleware, medicationRoutes)
+
+      // 重新加载药品列表和提醒
+      loadMedications()
+      loadUpcomingReminders()
+
+    } catch (error) {
+      console.error('删除药品错误:', error)
+      alert('删除失败: ' + error.message)
+    }
+  }
+
+
+
+
+  // 显示记录用药情况的模态框
+  async function showLogModal(medId) {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('请先登录')
+      }
+
+      const response = await fetch(`${MEDICATION_API_BASE_URL}/${medId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+
+        }
+      })
+
+      if (response.status === 404) {
+        throw new Error('药品未找到，无法记录')
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.message || '获取药品信息失败')
+      }
+
+      const medication = await response.json()
+
+      if (!medication.id || !medication.name) {
+        throw new Error('无效的药品数据格式')
+      }
+
+      // 填充模态框
+      document.getElementById('log-med-name').textContent = medication.name
+      document.getElementById('log-med-dosage').textContent = medication.dosage
+
+      // 设置默认时间为当前时间
+      const now = new Date();
+      const formattedTime = now.toISOString().replace('T', ' ').substring(0, 19)
+      document.getElementById('log-scheduled-time').textContent = formattedTime
+      currentScheduledTime = formattedTime
+
+
+      currentMedicationId = medId
+
+      // 显示模态框
+      document.getElementById('medication-log-modal').style.display = 'flex'
+    } catch (error) {
+      console.error('显示记录模态框错误:', error)
+      alert(`加载失败: ${error.message}`)
+    }
+  }
+
+
+  // 记录用药状态
+  async function recordMedicationStatus(status) {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        throw new Error('请先登录')
+      }
+
+      const notes = document.getElementById('log-notes').value
+      const scheduledTime = new Date(currentScheduledTime)
+
+      if (isNaN(scheduledTime.getTime())) {
+        throw new Error('无效的时间格式')
+      }
+
+      const response = await fetch(`${MEDICATION_API_BASE_URL}/${currentMedicationId}/logs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          scheduled_time: scheduledTime.toISOString(),
+          status: status,
+          notes: notes || ''
+        })
+      })
+
+      const responseData = await response.json()
+
+      if (!response.ok) {
+        throw new Error(responseData.message || '记录用药情况失败')
+      }
+
+      document.getElementById('medication-log-modal').style.display = 'none'
+      alert('记录已保存')
+    } catch (error) {
+      console.error('记录用药情况错误:', error)
+      alert(`记录失败: ${error.message}`)
+    }
+  }
+
+
+
+
+</script>
+
+</html>

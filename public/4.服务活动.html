@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="注册页面2.css">
+  <link rel="stylesheet" href="服务活动.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css">
+  <title>情暖老人心--服务活动</title>
+  <style>
+    /* 分页样式 */
+    .pagination {
+      margin-top: 20px;
+      text-align: center;
+      display: block;
+    }
+
+    .page-btn {
+      padding: 5px 15px;
+      margin: 0 5px;
+      border: 1px solid #ddd;
+      background-color: #f8f8f8;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .page-btn:hover {
+      background-color: #e8e8e8;
+    }
+
+    .page-btn:disabled {
+      color: #aaa;
+      cursor: not-allowed;
+      background-color: #f8f8f8;
+    }
+
+    .page-info {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 项部导航 -->
+  <div class="xtx_topnav">
+    <div class="wrapper">
+      <!-- 顶部导航 -->
+      <ul class="xtx_navs">
+        <li>
+          <a href="3.登录页面.html">请先登录</a>
+        </li>
+        <li>
+          <a href="2.注册页面.html">免费注册</a>
+        </li>
+        <li>
+          <a href="1.首页.html">返回首页</a>
+        </li>
+        <li>
+          <a href="4.服务活动.html">服务活动</a>
+        </li>
+        <li>
+          <a href="5.健康管理.html">健康管理</a>
+        </li>
+        <li>
+          <a href="6.个人中心.html">个人中心</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tab">
+    <!-- 头部 -->
+    <div class="tab-nav">
+      <img src="图片/logo2.jpg" alt="情暖老人心" class="logo">
+      <h3>上门服务</h3>
+      <ul>
+        <li><a class="active" href="javascript:;">跑腿</a></li>
+        <li><a href="javascript:;">找人陪伴</a></li>
+        <li><a href="javascript:;">上门做饭</a></li>
+        <li><a href="javascript:;">打扫卫生</a></li>
+        <li><a href="javascript:;">身心健康</a></li>
+      </ul>
+    </div>
+    <!-- tab栏和放大镜 -->
+    <div class="tab-content">
+      <div class="item active" id="big" data-tab="running">
+        <!-- 跑腿个人信息 -->
+        <div class="xtx-product-info" data-tab="1">
+
+          <div class="left">
+            <!-- 照片 -->
+            <div class="pictrue">
+              <div class="middle">
+                <img src="图片/1跑腿.png" alt="">
+                <div class="layer"></div>
+              </div>
+              <div class="small" data-tab="1">
+                <ul>
+                  <li class="active"><img src="图片/1跑腿.png" alt=""></li>
+                  <li><img src="图片/2跑腿.png" alt=""></li>
+                  <li><img src="图片/3跑腿.png" alt=""></li>
+                  <li><img src="图片/4跑腿.png" alt=""></li>
+                  <li><img src="图片/5跑腿.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="large"></div>
+            </div>
+            <!-- 照片下面的信息 -->
+            <div class="other">
+              <ul>
+                <li>
+                  <p>服务人气</p>
+                  <p>899+</p>
+                  <p>人气</p>
+                </li>
+                <li>
+                  <p>大众评价</p>
+                  <p>399+</p>
+                  <p>评价</p>
+                </li>
+                <li>
+                  <p>收藏人数</p>
+                  <p>1299+</p>
+                  <p><a href="javascript:;">收藏</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 详情介绍 -->
+          <div class="right">
+            <h3 class="name">跑腿</h3>
+            <p class="desc">速度快 / 能力强 / 好说话 / 态度好 / 做事细心 /</p>
+            <p class="price"><span class="now">¥10/单</span><span class="old">¥15/单</span></p>
+            <div class="address">
+              <div class="item">
+                <div class="dt">工作</div>
+                <div class="dd">周一至周日 24小时随叫随到</div>
+              </div>
+              <div class="item">
+                <div class="dt">配送</div>
+                <div class="dd">至
+                  <div class="box">
+                    <input type="text" class="addRess" value="请输入配送地址">
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">
+                  <span class="fw">保护隐私</span>
+                  <span class="fw">快速退款</span>
+                  <span class="fw">超时罚款</span>
+                </div>
+              </div>
+            </div>
+            <div class="attrs">
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <img src="图片/跑腿1.jpg" alt="1号跑腿" title="1号跑腿">
+                  <img src="图片/跑腿2.jpg" alt="2号跑腿" title="2号跑腿">
+                  <img src="图片/跑腿3.jpg" alt="3号跑腿" title="3号跑腿">
+                  <img src="图片/跑腿4.jpg" alt="4号跑腿" title="4号跑腿">
+                  <img src="图片/跑腿5.jpg" alt="5号跑腿" title="5号跑腿">
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <span class="size">1号跑腿</span>
+                  <span>2号跑腿</span>
+                  <span>3号跑腿</span>
+                  <span>4号跑腿</span>
+                  <span>5号跑腿</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">下单数(单)</div>
+                <div class="dd">
+                  <div class="num">
+                    <a href="javascript:;" class="cut">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="add">+</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a class="buy" href="javascript:;">立即下单</a>
+                <a class="sc" href="javascript:;">点击收藏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item" id="big" data-tab="companion">
+        <!-- 陪伴个人信息 -->
+        <div class="xtx-product-info">
+
+          <div class="left">
+            <!-- 照片 -->
+            <div class="pictrue">
+              <div class="middle">
+                <img src="图片/1陪伴.png" alt="">
+                <div class="layer"></div>
+              </div>
+              <div class="small">
+                <ul>
+                  <li class="active"><img src="图片/1陪伴.png" alt=""></li>
+                  <li><img src="图片/2陪伴.png" alt=""></li>
+                  <li><img src="图片/3陪伴.png" alt=""></li>
+                  <li><img src="图片/4陪伴.png" alt=""></li>
+                  <li><img src="图片/5陪伴.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="large"></div>
+            </div>
+            <!-- 照片下面的信息 -->
+            <div class="other">
+              <ul>
+                <li>
+                  <p>服务人气</p>
+                  <p>1982+</p>
+                  <p>人气</p>
+                </li>
+                <li>
+                  <p>大众评价</p>
+                  <p>543+</p>
+                  <p>评价</p>
+                </li>
+                <li>
+                  <p>收藏人数</p>
+                  <p>2893+</p>
+                  <p><a href="javascript:;">收藏</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 详情介绍 -->
+          <div class="right">
+            <h3 class="name">找人陪伴</h3>
+            <p class="desc">提供超高情绪价值 / 积极乐观 / 情商高 / 态度好 / 应变能力强 /</p>
+            <p class="price"><span class="now">¥55/h</span><span class="old">¥65/h</span></p>
+            <div class="address">
+              <div class="item">
+                <div class="dt">工作</div>
+                <div class="dd">周一至周日 7:00~23:00</div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">至
+                  <div class="box">
+                    <input type="text" class="addRess" value="请输入具体服务地址">
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">
+                  <span class="fw">保护隐私</span>
+                  <span class="fw">快速退款</span>
+                  <span class="fw">超时30分钟之内免费</span>
+                </div>
+              </div>
+            </div>
+            <div class="attrs">
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <img src="图片/陪伴1.jpg" alt="1号陪伴" title="1号陪伴">
+                  <img src="图片/陪伴2.jpg" alt="2号陪伴" title="2号陪伴">
+                  <img src="图片/陪伴3.jpg" alt="3号陪伴" title="3号陪伴">
+                  <img src="图片/陪伴4.jpg" alt="4号陪伴" title="4号陪伴">
+                  <img src="图片/陪伴5.jpg" alt="5号陪伴" title="5号陪伴">
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <span class="size">1号陪伴</span>
+                  <span>2号陪伴</span>
+                  <span>3号陪伴</span>
+                  <span>4号陪伴</span>
+                  <span>5号陪伴</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">下单数(h)</div>
+                <div class="dd">
+                  <div class="num">
+                    <a href="javascript:;" class="cut">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="add">+</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a class="buy" href="javascript:;">立即下单</a>
+                <a class="sc" href="javascript:;">点击收藏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item" id="big" data-tab="cooking">
+        <!-- 做饭个人信息 -->
+        <div class="xtx-product-info">
+
+          <div class="left">
+            <!-- 照片 -->
+            <div class="pictrue">
+              <div class="middle">
+                <img src="图片/1厨师.png" alt="">
+                <div class="layer"></div>
+              </div>
+              <div class="small">
+                <ul>
+                  <li class="active"><img src="图片/1厨师.png" alt=""></li>
+                  <li><img src="图片/2厨师.png" alt=""></li>
+                  <li><img src="图片/3厨师.png" alt=""></li>
+                  <li><img src="图片/4厨师.png" alt=""></li>
+                  <li><img src="图片/5厨师.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="large"></div>
+            </div>
+            <!-- 照片下面的信息 -->
+            <div class="other">
+              <ul>
+                <li>
+                  <p>服务人气</p>
+                  <p>2783+</p>
+                  <p>人气</p>
+                </li>
+                <li>
+                  <p>大众评价</p>
+                  <p>2321+</p>
+                  <p>评价</p>
+                </li>
+                <li>
+                  <p>收藏人数</p>
+                  <p>3523+</p>
+                  <p><a href="javascript:;">收藏</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 详情介绍 -->
+          <div class="right">
+            <h3 class="name">上门做饭</h3>
+            <p class="desc">厨艺高 / 态度好 / 绝不浪费 / 不包食材费用 / 可代买食材 / 做完后结算 /</p>
+            <p class="price"><span class="now">大菜¥35/道 小菜¥15/道</span><span class="old">大菜¥50/道 小菜¥20/道</span></p>
+            <div class="address">
+              <div class="item">
+                <div class="dt">工作</div>
+                <div class="dd">周一至周日 8:00~22:00</div>
+              </div>
+              <div class="item">
+                <div class="dt">上门</div>
+                <div class="dd">至
+                  <div class="box">
+                    <input type="text" class="addRess" value="请输入上门地址">
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">
+                  <span class="fw">自觉带走垃圾</span>
+                  <span class="fw">做完收拾但不负责饭后收拾</span>
+                  <span class="fw">满150减20</span>
+                </div>
+              </div>
+            </div>
+            <div class="attrs">
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <img src="图片/厨师1.jpg" alt="1号厨师" title="1号厨师">
+                  <img src="图片/厨师2.jpg" alt="2号厨师" title="2号厨师">
+                  <img src="图片/厨师3.jpg" alt="3号厨师" title="3号厨师">
+                  <img src="图片/厨师4.jpg" alt="4号厨师" title="4号厨师">
+                  <img src="图片/厨师5.jpg" alt="5号厨师" title="5号厨师">
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <span class="size">1号厨师</span>
+                  <span>2号厨师</span>
+                  <span>3号厨师</span>
+                  <span>4号厨师</span>
+                  <span>5号厨师</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">下单数(道)</div>
+                <div class="dd">
+                  <div class="num">
+                    <a href="javascript:;" class="cut">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="add">+</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a class="buy" href="javascript:;">立即下单</a>
+                <a class="sc" href="javascript:;">点击收藏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item" id="big" data-tab="cleaning">
+        <!-- 卫生个人信息 -->
+        <div class="xtx-product-info">
+
+          <div class="left">
+            <!-- 照片 -->
+            <div class="pictrue">
+              <div class="middle">
+                <img src="图片/1卫生.png" alt="">
+                <div class="layer"></div>
+              </div>
+              <div class="small">
+                <ul>
+                  <li class="active"><img src="图片/1卫生.png" alt=""></li>
+                  <li><img src="图片/2卫生.png" alt=""></li>
+                  <li><img src="图片/3卫生.png" alt=""></li>
+                  <li><img src="图片/4卫生.png" alt=""></li>
+                  <li><img src="图片/5卫生.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="large"></div>
+            </div>
+            <!-- 照片下面的信息 -->
+            <div class="other">
+              <ul>
+                <li>
+                  <p>服务人气</p>
+                  <p>2873+</p>
+                  <p>人气</p>
+                </li>
+                <li>
+                  <p>大众评价</p>
+                  <p>2323+</p>
+                  <p>评价</p>
+                </li>
+                <li>
+                  <p>收藏人数</p>
+                  <p>4383+</p>
+                  <p><a href="javascript:;">收藏</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 详情介绍 -->
+          <div class="right">
+            <h3 class="name">打扫卫生</h3>
+            <p class="desc">完成度高 / 态度好 / 无犯罪历史 / 心理健康 / 自觉带走垃圾 /</p>
+            <p class="price"><span class="now">¥75/h</span><span class="old">¥90/h</span></p>
+            <div class="address">
+              <div class="item">
+                <div class="dt">工作</div>
+                <div class="dd">周一至周五 8:30~22:00</div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">至
+                  <div class="box">
+                    <input type="text" class="addRess" value="请输入具体打扫地址">
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">
+                  <span class="fw">保护隐私</span>
+                  <span class="fw">快速退款</span>
+                  <span class="fw">包月800（每周一次）</span>
+                </div>
+              </div>
+            </div>
+            <div class="attrs">
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <img src="图片/卫生1.jpg" alt="1号卫生" title="1号卫生">
+                  <img src="图片/卫生2.jpg" alt="2号卫生" title="2号卫生">
+                  <img src="图片/卫生3.jpg" alt="3号卫生" title="3号卫生">
+                  <img src="图片/卫生4.jpg" alt="4号卫生" title="4号卫生">
+                  <img src="图片/卫生5.jpg" alt="5号卫生" title="5号卫生">
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <span class="size">1号卫生</span>
+                  <span>2号卫生</span>
+                  <span>3号卫生</span>
+                  <span>4号卫生</span>
+                  <span>5号卫生</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">下单数(h)</div>
+                <div class="dd">
+                  <div class="num">
+                    <a href="javascript:;" class="cut">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="add">+</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a class="buy" href="javascript:;">立即下单</a>
+                <a class="sc" href="javascript:;">点击收藏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="item" id="big" data-tab="health">
+        <!-- 健康个人信息 -->
+        <div class="xtx-product-info">
+
+          <div class="left">
+            <!-- 照片 -->
+            <div class="pictrue">
+              <div class="middle">
+                <img src="图片/1健康.png" alt="">
+                <div class="layer"></div>
+              </div>
+              <div class="small">
+                <ul>
+                  <li class="active"><img src="图片/1健康.png" alt=""></li>
+                  <li><img src="图片/2健康.png" alt=""></li>
+                  <li><img src="图片/3健康.png" alt=""></li>
+                  <li><img src="图片/4健康.png" alt=""></li>
+                  <li><img src="图片/5健康.png" alt=""></li>
+                </ul>
+              </div>
+              <div class="large"></div>
+            </div>
+            <!-- 照片下面的信息 -->
+            <div class="other">
+              <ul>
+                <li>
+                  <p>服务人气</p>
+                  <p>834+</p>
+                  <p>人气</p>
+                </li>
+                <li>
+                  <p>大众评价</p>
+                  <p>233+</p>
+                  <p>评价</p>
+                </li>
+                <li>
+                  <p>收藏人数</p>
+                  <p>764+</p>
+                  <p><a href="javascript:;">收藏</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 详情介绍 -->
+          <div class="right">
+            <h3 class="name">身心健康</h3>
+            <p class="desc">持证上岗 / 检查细致认真 / 能力专业 / 态度好 / 不坑蒙拐骗 /</p>
+            <p class="price"><span class="now">¥120/次</span><span class="old">¥150/次</span></p>
+            <div class="address">
+              <div class="item">
+                <div class="dt">工作</div>
+                <div class="dd">周一至周日 7:00~23:00（紧急情况随时）</div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">至
+                  <div class="box">
+                    <input type="text" class="addRess" value="请输入具体服务地址">
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">服务</div>
+                <div class="dd">
+                  <span class="fw">保护病历隐私</span>
+                  <span class="fw">机械消毒</span>
+                  <span class="fw">包月800（每月八次）</span>
+                </div>
+              </div>
+            </div>
+            <div class="attrs">
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <img src="图片/健康1.jpg" alt="1号健康" title="1号健康">
+                  <img src="图片/健康2.jpg" alt="2号健康" title="2号健康">
+                  <img src="图片/健康3.jpg" alt="3号健康" title="3号健康">
+                  <img src="图片/健康4.jpg" alt="4号健康" title="4号健康">
+                  <img src="图片/健康5.jpg" alt="5号健康" title="5号健康">
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">人员</div>
+                <div class="dd">
+                  <span class="size">1号检查</span>
+                  <span>2号检查</span>
+                  <span>3号检查</span>
+                  <span>4号检查</span>
+                  <span>5号检查</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="dt">下单数(次)</div>
+                <div class="dd">
+                  <div class="num">
+                    <a href="javascript:;" class="cut">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="add">+</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a class="buy" href="javascript:;">立即下单</a>
+                <a class="sc" href="javascript:;">点击收藏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 数据收集 -->
+    <div class="tabs">
+      <ul>
+        <li><a class="active" href="javascript:;" data-tab="orders">我的订单</a></li>
+        <li><a href="javascript:;" data-tab="favorites">我的收藏</a></li>
+      </ul>
+    </div>
+
+    <div class="tabs-content">
+      <!-- 我的订单 -->
+      <div class="items active" id="big2" data-items="orders">
+        <table id="orderTable">
+          <thead>
+            <tr>
+              <th>服务内容</th>
+              <th>下单数量</th>
+              <th>地址</th>
+              <th>服务人员</th>
+              <th>下单时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 订单数据将通过JS动态填充 -->
+          </tbody>
+        </table>
+        <div class="pagination" id="orderPagination">
+          <button class="page-btn" id="orderPrev">上一页</button>
+          <span class="page-info" id="ordersPageInfo">1/1</span>
+          <button class="page-btn" id="orderNext">下一页</button>
+        </div>
+      </div>
+
+      <!-- 我的收藏 -->
+      <div class="items" id="big2" data-items="favorites">
+        <table id="favoriteTable">
+          <thead>
+            <tr>
+              <th>服务内容</th>
+              <th>数量</th>
+              <th>地址</th>
+              <th>服务人员</th>
+              <th>收藏时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 收藏数据将通过JS动态填充 -->
+          </tbody>
+        </table>
+        <div class="pagination" id="favoritePagination">
+          <button class="page-btn" id="favoritePrev">上一页</button>
+          <span class="page-info" id="favoritesPageInfo">1/1</span>
+          <button class="page-btn" id="favoriteNext">下一页</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 确认订单弹窗 -->
+    <div id="confirmModal">
+      <h3>确认订单</h3>
+      <p id="confirmContent"></p>
+      <div>
+        <button id="cancelOrder" style="margin-right: 10px;">取消</button>
+        <button id="confirmOrder">确认</button>
+      </div>
+    </div>
+
+    <!-- 支付成功弹窗 -->
+    <div id="successModal">
+      <h3>下单成功</h3>
+      <img src="图片/二维码.png" alt="支付成功">
+      <p>您的订单已提交成功！感谢您的支持！！</p>
+      <p>扫描二维码了解具体订单详情！！</p>
+      <button id="closeSuccess" style="display:block; margin:10px auto;">关闭</button>
+    </div>
+  </div>
+  <!-- 公共底部 -->
+  <div class="xtx_footer clearfix">
+    <div class="wrapper">
+      <!-- 联系我们 -->
+      <div class="contact clearfix">
+        <dl>
+          <dt>客户服务</dt>
+          <dd class="chat">
+            <img src="图片/二维码.png" alt="">
+            <p>在线客服</p>
+          </dd>
+          <dd class="feedback">
+            <img src="图片/二维码.png" alt="">
+            <p>问题反馈</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>关注我们</dt>
+          <dd class="weixin">
+            <img src="图片/二维码.png" alt="">
+            <p>公众号</p>
+          </dd>
+          <dd class="weibo">
+            <img src="图片/二维码.png" alt="">
+            <p>微博</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>服务热线</dt>
+          <dd class="hotline">
+            400-0000-000
+            <small>周一至周日 8:00-18:00</small>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- 其它 -->
+    <div class="extra">
+      <div class="wrapper">
+        <!-- 口号 -->
+        <div class="slogan">
+          <a href="javascript:;" class="price">价格亲民</a>
+          <a href="javascript:;" class="express">物流快捷</a>
+          <a href="javascript:;" class="quality">品质新鲜</a>
+        </div>
+        <!-- 版权信息 -->
+        <div class="copyright">
+          <p>
+            <a href="4.服务活动.html">返回顶部</a>
+            <a href="1.首页.html">进入首页</a>
+            <a href="5.健康管理.html">健康管理</a>
+            <a href="6.个人中心.html">个人中心</a>
+          </p>
+          <p>&lt;&nbsp;情暖老人心&nbsp;&gt;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+
+    // 分页状态
+    const paginationState = {
+      orders: {
+        currentPage: 1,
+        totalPages: 1,
+        data: [],
+        itemsPerPage: 5
+      },
+      favorites: {
+        currentPage: 1,
+        totalPages: 1,
+        data: [],
+        itemsPerPage: 5
+      }
+    }
+
+    //用户名显示
+    async function updateLoginUI() {
+      const li1 = document.querySelector('.xtx_navs li:first-child')
+      const li2 = li1.nextElementSibling
+      const token = localStorage.getItem('token')
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+      if (token && currentUser) {
+        try {
+          const response = await fetch('http://localhost:3001/api/profile', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          })
+
+          if (!response.ok) {
+            throw new Error('Token无效')
+          }
+
+          const userData = await response.json()
+
+          li1.innerHTML = `
+        <a href="javascript:;"><i class="iconfont icon-user">${currentUser.userName}</i></a>
+      `
+          li2.innerHTML = '<a href="javascript:;" class="logout-btn">退出登录</a>'
+
+          // 退出登录处理
+          li2.querySelector('a').addEventListener('click', async function () {
+            try {
+              await fetch('http://localhost:3001/api/logout', {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${token}`
+                }
+              })
+            } catch (error) {
+              console.error('注销请求失败:', error)
+            } finally {
+              localStorage.removeItem('token')
+              localStorage.removeItem('currentUser')
+              location.reload()
+            }
+          })
+
+        } catch (error) {
+          console.error('验证登录状态失败:', error)
+          clearAuthData()
+        }
+      } else {
+        clearAuthData()
+      }
+    }
+
+    function clearAuthData() {
+      const li1 = document.querySelector('.xtx_navs li:first-child')
+      const li2 = li1.nextElementSibling
+      li1.innerHTML = '<a href="3.登录页面.html">请先登录</a>'
+      li2.innerHTML = '<a href="2.注册页面.html">免费注册</a>'
+    }
+
+
+
+
+    // 全局变量
+    let selectedStaff = ''
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+    function rigHt() {
+
+      const spans = document.querySelectorAll('.xtx-product-info .right .attrs span')
+      for (let i = 0; i < spans.length; i++) {
+        spans[i].addEventListener('click', function () {
+          document.querySelector('.right .attrs .size').classList.remove('size')
+          this.classList.add('size')
+          selectedStaff = this.textContent.trim();
+          console.log('选中服务人员:', selectedStaff); // 调试日志
+        })
+      }
+      const currentItem = document.querySelector('.item.active')
+      if (!currentItem) return
+
+      const add = currentItem.querySelector('.right .attrs .num .add')
+      const cut = currentItem.querySelector('.right .attrs .num .cut')
+      const sum = currentItem.querySelector('.right .attrs .num .sum')
+
+      if (add && cut && sum) {
+        // 克隆元素，清除之前的所有事件监听
+        const addClone = add.cloneNode(true)
+        const cutClone = cut.cloneNode(true)
+        const sumClone = sum.cloneNode(true)
+
+        add.parentNode.replaceChild(addClone, add)
+        cut.parentNode.replaceChild(cutClone, cut)
+        sum.parentNode.replaceChild(sumClone, sum)
+
+
+        // 然后重新绑定事件（只绑定一次）
+        addClone.addEventListener('click', function (e) {
+          e.preventDefault()
+          let newsum = parseInt(sumClone.value) || 1
+          newsum++
+          sumClone.value = newsum
+        })
+
+        cutClone.addEventListener('click', function (e) {
+          e.preventDefault()
+          let newsum = parseInt(sumClone.value) || 1
+          if (newsum > 1) {
+            newsum--
+          }
+          sumClone.value = newsum
+        })
+
+        sumClone.addEventListener('input', function () {
+          this.value = this.value.replace(/[^0-9]/g, '')
+        })
+
+
+      }
+    }
+    rigHt()
+
+
+
+    // 上面的tab栏切换
+    const as = document.querySelectorAll('.tab-nav a')
+    const divs = document.querySelectorAll('.tab-content #big')
+    for (let i = 0; i < as.length; i++) {
+      as[i].addEventListener('click', function () {
+        //移除上一个
+        document.querySelectorAll('.tab-nav .active').forEach(el => el.classList.remove('active'))
+
+        this.classList.add('active')
+        document.querySelectorAll('.tab-content .active').forEach(el => el.classList.remove('active'))
+        divs[i].classList.add('active')
+
+        bindAddressEvents()
+        rigHt()
+        initMagnifier()
+        loadFavorites()
+      })
+    }
+
+
+    //放大镜
+    function initMagnifier() {
+
+      // 1. 获取三个盒子
+      // 2. 小盒子 图片切换效果
+      const small = document.querySelector('.item.active .small')
+      //  中盒子
+      const middle = document.querySelector('.item.active .middle')
+      //  大盒子
+      const large = document.querySelector('.item.active .large')
+
+
+      small.addEventListener('mouseover', function (e) {
+        if (e.target.tagName === 'IMG') {
+
+          const currentActive = this.querySelector('li.active')
+          if (currentActive) {
+            currentActive.classList.remove('active')
+          }
+
+          e.target.parentNode.classList.add('active')
+
+          middle.querySelector('img').src = e.target.src
+
+          large.style.backgroundImage = `url(${e.target.src})`
+
+        }
+      })
+
+
+      // 3. 鼠标经过中等盒子， 显示隐藏 大盒子
+      middle.addEventListener('mouseenter', show)
+      middle.addEventListener('mouseleave', hide)
+      let timeId = null
+
+      function show() {
+
+        clearTimeout(timeId)
+        large.style.display = 'block'
+      }
+
+      function hide() {
+        timeId = setTimeout(function () {
+          large.style.display = 'none'
+        }, 200)
+      }
+
+
+      // 4. 鼠标经过大盒子， 显示隐藏 大盒子
+      large.addEventListener('mouseenter', show)
+      large.addEventListener('mouseleave', hide)
+
+
+      // 5. 鼠标经过中等盒子，显示隐藏 黑色遮罩层
+      const layer = document.querySelector('.item.active .layer')
+      middle.addEventListener('mouseenter', function () {
+        layer.style.display = 'block'
+      })
+      middle.addEventListener('mouseleave', function () {
+        layer.style.display = 'none'
+      })
+      // 6.移动黑色遮罩盒子
+      middle.addEventListener('mousemove', function (e) {
+
+
+        let x = e.pageX - middle.getBoundingClientRect().left
+        let y = e.pageY - middle.getBoundingClientRect().top - document.documentElement.scrollTop
+
+        // 黑色遮罩移动 在 middle 盒子内 限定移动的距离
+        if (x >= 0 && x <= 400 && y >= 0 && y <= 400) {
+          // 黑色盒子不是一直移动的
+          // 声明2个变量 黑色盒子移动的 mx my变量 
+          let mx = 0, my = 0
+          if (x < 100) mx = 0
+          if (x >= 100 && x <= 300) mx = x - 100
+          if (x > 300) mx = 200
+
+          if (y < 100) my = 0
+          if (y >= 100 && y <= 300) my = y - 100
+          if (y > 300) my = 200
+
+          layer.style.left = mx + 'px'
+          layer.style.top = my + 'px'
+          // 大盒子的背景图片要跟随 中等盒子移动  存在的关系是 2倍   
+          large.style.backgroundPositionX = -2 * mx + 'px'
+          large.style.backgroundPositionY = -2 * my + 'px'
+        }
+      })
+    }
+
+    initMagnifier()
+
+
+
+    // 下面的tab切换
+    const as2 = document.querySelectorAll('.tabs a')
+    const divs2 = document.querySelectorAll('.tabs-content #big2')
+    for (let i = 0; i < as2.length; i++) {
+      as2[i].addEventListener('click', function () {
+        //移除上一个
+        document.querySelectorAll('.tabs .active').forEach(el => el.classList.remove('active'))
+
+        this.classList.add('active')
+
+        document.querySelectorAll('.tabs-content .active').forEach(el => el.classList.remove('active'))
+        divs2[i].classList.add('active')
+      })
+    }
+
+
+    // 修改地址输入框事件绑定方式
+    function bindAddressEvents() {
+      const currentAddRess = document.querySelector('.item.active .addRess')
+      if (!currentAddRess) return
+
+      // 地址输入框聚焦时清空默认内容
+      currentAddRess.addEventListener('focus', function () {
+        if (this.value === '请输入配送地址' || this.value === '请输入具体服务地址' || this.value === '请输入上门地址' || this.value === '请输入具体打扫地址') {
+          this.value = ''
+        }
+      })
+
+      // 地址输入框失焦时恢复默认提示
+      currentAddRess.addEventListener('blur', function () {
+        if (this.value.trim() === '') {
+          const placeholderText = this.getAttribute('placeholder') || '请输入配送地址'
+          this.value = placeholderText
+        }
+      })
+    }
+
+
+    // 初始化时绑定
+    bindAddressEvents();
+
+
+    // 修改事件绑定方式，确保DOM加载完成后再绑定
+    document.addEventListener('DOMContentLoaded', function () {
+      // 初始化分页状态
+      paginationState.orders = {
+        currentPage: 1,
+        totalPages: 1,
+        data: [],
+        itemsPerPage: 5 // 每页显示5条数据
+      }
+
+      paginationState.favorites = {
+        currentPage: 1,
+        totalPages: 1,
+        data: [],
+        itemsPerPage: 5
+      }
+
+      // 使用事件委托方式绑定点击事件
+      document.querySelector('.tab-content').addEventListener('click', function (e) {
+        if (e.target.classList.contains('buy')) {
+          console.log('立即下单按钮被点击')
+          const currentItem = document.querySelector('.item.active')
+          const address = currentItem.querySelector('.addRess').value
+          const quantity = currentItem.querySelector('.right .attrs .num .sum').value
+
+          // 检查登录状态
+          if (!currentUser) {
+            alert('请先登录')
+            window.location.href = '3.登录页面.html'
+            return
+          }
+
+          // 检查地址
+          if (address === '请输入配送地址' || address.trim() === '') {
+            alert('请先输入地址')
+            return
+          }
+
+          // 检查人员选择
+          if (!selectedStaff) {
+            alert('请选择服务人员')
+            return
+          }
+
+          // 显示确认弹窗
+          document.getElementById('confirmContent').innerHTML = `
+                <p><strong>服务人员:</strong> ${selectedStaff}</p>
+                <p><strong>下单数量:</strong> ${quantity}单</p>
+                <p><strong>配送地址:</strong> ${address}</p>
+            `
+          document.getElementById('confirmModal').style.display = 'block'
+        }
+      })
+      updateLoginUI()
+      loadOrders()
+      loadFavorites()
+
+      // 分页按钮事件 
+      document.getElementById('orderPrev').addEventListener('click', function () {
+        console.log('上一页按钮被点击')
+        console.log('当前页码1:', paginationState.orders.currentPage)
+        if (paginationState.orders.currentPage > 1) {
+          paginationState.orders.currentPage--
+          console.log('当前页码2:', paginationState.orders.currentPage)
+          displayPaginatedData('orders')
+          console.log('123')
+        }
+      })
+
+      document.getElementById('orderNext').addEventListener('click', function () {
+        if (paginationState.orders.currentPage < paginationState.orders.totalPages) {
+          paginationState.orders.currentPage++
+          displayPaginatedData('orders')
+        }
+      })
+
+      document.getElementById('favoritePrev').addEventListener('click', function () {
+        if (paginationState.favorites.currentPage > 1) {
+          paginationState.favorites.currentPage--
+          displayPaginatedData('favorites')
+        }
+      })
+
+      document.getElementById('favoriteNext').addEventListener('click', function () {
+        if (paginationState.favorites.currentPage < paginationState.favorites.totalPages) {
+          paginationState.favorites.currentPage++
+          displayPaginatedData('favorites')
+        }
+      })
+
+    })
+
+
+    // API基础URL
+    const API_BASE_URL = 'http://localhost:3001/api'
+
+    // 获取服务列表
+    async function getServices() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/services`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        if (!response.ok) throw new Error('获取服务列表失败')
+        return await response.json()
+      } catch (error) {
+        console.error('获取服务列表错误:', error)
+        return []
+      }
+    }
+
+    // 创建订单
+    async function createOrder(orderData) {
+      try {
+        // 添加数据验证
+        if (!orderData.service_type || !orderData.service_content ||
+          !orderData.quantity || !orderData.address || !orderData.staff) {
+          throw new Error('请填写完整的订单信息')
+        }
+
+        // 添加userId
+        orderData.userId = currentUser.id
+
+        const response = await fetch(`${API_BASE_URL}/orders`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(orderData)
+        })
+
+        if (!response.ok) {
+          const errorData = await response.json()
+          throw new Error(errorData.message || '创建订单失败')
+        }
+
+        return await response.json()
+      } catch (error) {
+        console.error('创建订单错误:', error)
+        throw error;
+      }
+    }
+
+
+    // 获取用户订单
+    async function getUserOrders() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/orders`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        if (!response.ok) throw new Error('获取订单失败')
+        const data = await response.json()
+        return data.data || []
+      } catch (error) {
+        console.error('获取订单错误:', error)
+        return []
+      }
+    }
+
+    // 添加收藏
+    async function addFavorite(favoriteData) {
+      try {
+        // 先检查是否已收藏
+        const checkResponse = await fetch(`${API_BASE_URL}/favorites/check`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({
+            service_type: favoriteData.service_type,
+            staff: favoriteData.staff
+          })
+        })
+
+        const checkResult = await checkResponse.json()
+
+        // 如果已经收藏，直接返回
+        if (checkResult.exists) {
+          return { alreadyExists: true }
+        }
+
+        favoriteData.userId = currentUser.id
+
+
+        const response = await fetch(`${API_BASE_URL}/favorites`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(favoriteData)
+        })
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || '添加收藏失败');
+        }
+
+        return await response.json()
+      } catch (error) {
+        console.error('添加收藏错误:', error)
+        throw error
+      }
+    }
+
+    // 获取用户收藏
+    async function getUserFavorites() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/favorites`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error('获取收藏失败')
+        }
+
+        const responseData = await response.json()
+
+        // 确保返回的是数组
+        return responseData.data
+
+      } catch (error) {
+        console.error('获取收藏错误:', error)
+        throw error
+      }
+    }
+
+
+
+
+
+    document.getElementById('confirmOrder').addEventListener('click', async function () {
+      // 登录检查
+      if (!currentUser) {
+        alert('请先登录')
+        window.location.href = '3.登录页面.html'
+        return
+      }
+
+      // 获取当前服务类型和内容
+      const currentItem = document.querySelector('.item.active')
+      const service_content = document.querySelector('.tab-nav .active').textContent
+      const service_type = currentItem.dataset.tab
+
+      // 创建订单对象
+      const orderData = {
+        service_type: service_type,
+        service_content: service_content,
+        quantity: parseInt(currentItem.querySelector('.right .attrs .num .sum').value),
+        address: currentItem.querySelector('.addRess').value,
+        staff: selectedStaff,
+        status: 'pending'
+      }
+
+      // 验证数据
+      if (!orderData.address || orderData.address.includes('请输入') || orderData.address.trim() === '') {
+        return
+      }
+
+      if (!orderData.quantity || isNaN(orderData.quantity)) {
+        alert('请输入有效的数量')
+        return
+      }
+
+      if (!orderData.staff) {
+        alert('请选择服务人员')
+        return
+      }
+
+      if (!orderData.service_type) {
+        alert('无法确定服务类型，请刷新页面重试')
+        return
+      }
+
+      // 更新用户订单数据
+      try {
+        orderData.userId = currentUser.id
+        const result = await createOrder(orderData)
+
+        // 关闭确认弹窗，显示成功弹窗
+        document.getElementById('confirmModal').style.display = 'none'
+        document.getElementById('successModal').style.display = 'block'
+
+        // 刷新订单列表
+        loadOrders()
+      } catch (error) {
+        alert('下单失败: ' + error.message)
+      }
+    })
+
+    // 取消订单
+    document.getElementById('cancelOrder').addEventListener('click', function () {
+      document.getElementById('confirmModal').style.display = 'none'
+    })
+
+    // 关闭成功弹窗
+    document.getElementById('closeSuccess').addEventListener('click', function () {
+      document.getElementById('successModal').style.display = 'none'
+    })
+
+
+
+    async function loadOrders() {
+      if (!currentUser) {
+        const orderTable = document.querySelector('#orderTable tbody')
+        if (orderTable) {
+          orderTable.innerHTML = '<tr><td colspan="6">请先登录</td></tr>'
+        }
+        return
+      }
+
+      try {
+        const response = await getUserOrders()
+        const orders = Array.isArray(response) ? response : (response.data || [])
+
+        paginationState.orders.data = orders
+        paginationState.orders.totalPages = Math.ceil(orders.length / paginationState.orders.itemsPerPage)
+        paginationState.orders.currentPage = 1 // 重置为第一页
+
+        if (orders.length === 0) {
+          const orderTable = document.querySelector('#orderTable tbody')
+          orderTable.innerHTML = '<tr><td colspan="6">暂无订单数据</td></tr>'
+          return
+        }
+
+        // 只调用分页渲染
+        displayPaginatedData('orders')
+
+      } catch (error) {
+        console.error('加载订单错误:', error)
+        const orderTable = document.querySelector('#orderTable tbody')
+        if (orderTable) {
+          orderTable.innerHTML = '<tr><td colspan="6">加载订单失败</td></tr>'
+        }
+      }
+    }
+
+    function displayPaginatedData(type) {
+      console.log('显示分页数据', type)
+      const state = paginationState[type]
+      const tableBody = document.querySelector(`#${type === 'orders' ? 'orderTable' : 'favoriteTable'} tbody`)
+      const pageInfo = document.getElementById(`${type === 'orders' ? 'orderPageInfo' : 'favoritePageInfo'}`)
+      console.log('displayPaginatedData', state)
+      if (!tableBody || !pageInfo) return
+
+      tableBody.innerHTML = ''
+
+      const startIndex = (state.currentPage - 1) * state.itemsPerPage
+      const endIndex = startIndex + state.itemsPerPage
+      const currentData = state.data.slice(startIndex, endIndex)
+
+      if (currentData.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="6">暂无数据</td></tr>`
+        return
+      }
+
+      currentData.forEach(item => {
+        const row = document.createElement('tr')
+        row.innerHTML = `
+      <td>${item.service_content || ''}</td>
+      <td>${item.quantity || ''}</td>
+      <td>${item.address || ''}</td>
+      <td>${item.staff || ''}</td>
+      <td>${item.created_at ? new Date(item.created_at).toLocaleString() : ''}</td>
+      <td>
+        <button class="action-btn delete-order" data-id="${item.id}">删除</button>
+      </td>
+    `
+        tableBody.appendChild(row);
+      })
+
+      console.log('当前页码:', state.currentPage)
+      pageInfo.textContent = `${state.currentPage}/${state.totalPages}`
+
+      // 重新绑定删除按钮事件
+      tableBody.querySelectorAll('.delete-order').forEach(btn => {
+        btn.addEventListener('click', async function () {
+          const orderId = this.dataset.id
+          await deleteOrder(orderId)
+          await loadOrders()
+        })
+      })
+    }
+
+
+
+    // 点击收藏
+    document.querySelector('.tab-content').addEventListener('click', async function (e) {
+      if (e.target.classList.contains('sc')) {
+        const currentItem = document.querySelector('.item.active')
+        const address = currentItem.querySelector('.addRess').value
+        const quantity = currentItem.querySelector('.right .attrs .num .sum').value
+        const service_content = document.querySelector('.tab-nav .active').textContent
+        const service_type = document.querySelector('.item.active').dataset.tab
+        const staff = selectedStaff
+
+        // 检查登录状态
+        if (!currentUser) {
+          alert('请先登录')
+          window.location.href = '3.登录页面.html'
+          return
+        }
+
+        // 检查地址
+        if (address === '请输入配送地址' || address.trim() === '' ||
+          address === '请输入具体服务地址' || address === '请输入上门地址' ||
+          address === '请输入具体打扫地址') {
+          alert('请先输入地址')
+          return
+        }
+
+        // 检查人员选择
+        if (!selectedStaff) {
+          alert('请选择服务人员')
+          return
+        }
+
+        // 更新用户收藏数据，按服务类型分类
+        try {
+          const favoriteData = {
+            service_type,
+            service_content,
+            quantity,
+            address,
+            staff
+          }
+
+
+          const result = await addFavorite(favoriteData)
+          alert('收藏成功')
+          loadFavorites()
+        } catch (error) {
+          alert('收藏失败: ' + error.message)
+        }
+      }
+    })
+
+
+    //// 初始化加载数据
+    if (currentUser) {
+      loadOrders()
+      loadFavorites()
+    }
+
+
+    // 删除订单
+    async function deleteOrder(orderId) {
+      try {
+        const response = await fetch(`${API_BASE_URL}/orders/${orderId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        if (!response.ok) throw new Error('删除订单失败')
+      } catch (error) {
+        console.error('删除订单错误:', error)
+        throw error
+      }
+    }
+
+
+
+
+    async function loadFavorites() {
+      if (!currentUser) {
+        const favoriteTable = document.querySelector('#favoriteTable tbody')
+        if (favoriteTable) {
+          favoriteTable.innerHTML = '<tr><td colspan="6">请先登录</td></tr>'
+        }
+        const pagination = document.getElementById('favoritePagination')
+        if (pagination) {
+          pagination.style.display = 'none'
+        }
+        return
+      }
+
+      try {
+        const favorites = await getUserFavorites()
+        const currentTab = document.querySelector('.item.active')
+        if (!currentTab) return
+
+        const currentService_type = currentTab.dataset.tab
+        const filteredFavorites = Array.isArray(favorites)
+          ? favorites.filter(fav => fav.service_type === currentService_type)
+          : []
+
+        // 更新分页状态 + 触发分页渲染
+        paginationState.favorites.data = filteredFavorites
+        paginationState.favorites.totalPages = Math.ceil(filteredFavorites.length / paginationState.favorites.itemsPerPage)
+        paginationState.favorites.currentPage = 1
+        displayPaginatedData('favorites') // 会自动清空表格、分页显示和绑定按钮事件
+      } catch (error) {
+        console.error('加载收藏错误:', error)
+        const favoriteTable = document.querySelector('#favoriteTable tbody')
+        if (favoriteTable) {
+          favoriteTable.innerHTML = '<tr><td colspan="6">加载收藏失败</td></tr>'
+        }
+        const pagination = document.getElementById('favoritePagination')
+        if (pagination) {
+          pagination.style.display = 'none'
+        }
+      }
+    }
+
+
+    // 修改删除收藏函数
+    async function deleteFavorite(favoriteId) {
+      try {
+        const response = await fetch(`${API_BASE_URL}/favorites/${favoriteId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        if (!response.ok) throw new Error('删除收藏失败')
+      } catch (error) {
+        console.error('删除收藏错误:', error)
+        throw error
+      }
+    }
+
+
+    // 从收藏下单
+    async function orderFromFavorite(favoriteId) {
+      try {
+        const response = await fetch(`${API_BASE_URL}/favorites/detail/${favoriteId}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error('获取收藏详情失败')
+        }
+
+        const responseData = await response.json()
+        console.log('API响应数据:', responseData)
+
+        const favorite = responseData.data
+
+        if (!favorite) {
+          throw new Error('无法获取收藏详情')
+        }
+
+        console.log('收藏详情:', favorite)
+
+        // 使用收藏记录中的实际数据
+        const orderData = {
+          service_type: favorite.service_type || document.querySelector('.item.active').dataset.tab,
+          service_content: favorite.service_content || document.querySelector('.tab-nav .active').textContent,
+          quantity: favorite.quantity || 1,
+          address: favorite.address || '未提供地址',
+          staff: favorite.staff || '未指定人员',
+          status: 'pending'
+        }
+
+        // 显示确认弹窗
+        document.getElementById('confirmContent').innerHTML = `
+      <p><strong>服务内容:</strong> ${orderData.service_content}</p>
+      <p><strong>下单数量:</strong> ${orderData.quantity}</p>
+      <p><strong>配送地址:</strong> ${orderData.address}</p>
+      <p><strong>服务人员:</strong> ${orderData.staff}</p>
+    `
+        document.getElementById('confirmModal').style.display = 'block'
+
+        // 临时保存orderData，用于确认订单
+        const confirmOrderBtn = document.getElementById('confirmOrder')
+        const originalClick = confirmOrderBtn.onclick;
+
+        confirmOrderBtn.onclick = async function () {
+          try {
+            // 确保使用当前用户ID
+            orderData.userId = currentUser.id
+            // 直接使用收藏中的地址，不需要验证页面输入框
+            if (!orderData.address || orderData.address.trim() === '') {
+              alert('收藏中的地址无效')
+              return;
+            }
+
+            const result = await createOrder(orderData)
+            document.getElementById('confirmModal').style.display = 'none'
+            document.getElementById('successModal').style.display = 'block'
+            loadOrders()
+          } catch (error) {
+            alert('下单失败: ' + error.message)
+          } finally {
+            confirmOrderBtn.onclick = originalClick
+          }
+        }
+      } catch (error) {
+        console.error('从收藏下单错误:', error)
+        alert('从收藏下单失败: ' + error.message)
+      }
+    }
+
+
+    async function editFavorite(favoriteId) {
+      try {
+        const response = await fetch(`${API_BASE_URL}/favorites/${favoriteId}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error('无法获取收藏详情')
+        }
+
+        const responseData = await response.json()
+        const favorite = responseData.data
+
+        if (!favorite) {
+          throw new Error('无法获取收藏详情')
+        }
+
+        // 创建修改表单弹窗
+        const editModal = document.createElement('div')
+        editModal.id = 'editModal'
+        editModal.style.cssText = `
+      width: 400px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    `
+
+        editModal.innerHTML = `
+      <h3>修改收藏</h3>
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">服务内容</label>
+        <input type="text" id="editContent" value="${favorite.service_content || ''}" 
+               style="width: 100%; padding: 8px; box-sizing: border-box;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">数量</label>
+        <input type="number" id="editQuantity" value="${favorite.quantity || ''}" 
+               style="width: 100%; padding: 8px; box-sizing: border-box;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">地址</label>
+        <input type="text" id="editAddress" value="${favorite.address || ''}" 
+               style="width: 100%; padding: 8px; box-sizing: border-box;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">服务人员</label>
+        <input type="text" id="editStaff" value="${favorite.staff || ''}" 
+               style="width: 100%; padding: 8px; box-sizing: border-box;">
+      </div>
+      <div style="text-align: right; margin-top: 20px;">
+        <button id="cancelEdit" style="padding: 8px 15px; margin-right: 10px;">取消</button>
+        <button id="saveEdit" style="padding: 8px 15px; background: #4CAF50; color: white; border: none;">保存</button>
+      </div>
+    `
+
+        document.body.appendChild(editModal)
+
+        // 保存修改
+        document.getElementById('saveEdit').addEventListener('click', async function () {
+          try {
+            const updatedFavorite = {
+              // service_type: document.getElementById('editType').value,
+              service_content: document.getElementById('editContent').value,
+              quantity: document.getElementById('editQuantity').value || 1,
+              address: document.getElementById('editAddress').value,
+              staff: document.getElementById('editStaff').value
+            }
+
+            // 验证必填字段
+            if (!updatedFavorite.service_content ||
+              !updatedFavorite.quantity || !updatedFavorite.address || !updatedFavorite.staff) {
+              alert('请填写所有必填字段')
+              return
+            }
+
+            const updateResponse = await fetch(`${API_BASE_URL}/favorites/${favoriteId}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+              },
+              body: JSON.stringify(updatedFavorite)
+            })
+
+            if (!updateResponse.ok) {
+              const errorData = await updateResponse.json()
+              throw new Error(errorData.message || '更新收藏失败')
+            }
+
+            document.body.removeChild(editModal)
+            loadFavorites()
+          } catch (error) {
+            console.error('保存修改错误:', error)
+            alert('保存修改失败: ' + error.message)
+          }
+          alert('修改成功')
+        })
+
+        // 取消修改
+        document.getElementById('cancelEdit').addEventListener('click', function () {
+          document.body.removeChild(editModal)
+        })
+
+      } catch (error) {
+        console.error('编辑收藏错误:', error)
+        alert('编辑收藏失败: ' + error.message)
+      }
+    }
+
+
+
+    // 显示分页数据
+    function displayPaginatedData(dataType) {
+      console.log('显示分页数据', dataType)
+      const state = paginationState[dataType]
+      const tableBody = document.querySelector(`#${dataType === 'orders' ? 'orderTable' : 'favoriteTable'} tbody`)
+      const paginationDiv = document.getElementById(`${dataType}Pagination`)
+      const pageInfo = document.getElementById(`${dataType}PageInfo`)
+      const prevBtn = document.getElementById(`${dataType}Prev`)
+      const nextBtn = document.getElementById(`${dataType}Next`)
+
+      if (!tableBody) {
+        console.error(`无法找到${dataType}表格体`)
+        return
+      }
+
+      // 计算当前页数据
+      const startIndex = (state.currentPage - 1) * state.itemsPerPage
+      const endIndex = Math.min(startIndex + state.itemsPerPage, state.data.length)
+      const pageData = state.data.slice(startIndex, endIndex)
+      console.log('state', state)
+      // 清空表格
+      tableBody.innerHTML = ''
+
+      if (pageData.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="6">暂无数据</td></tr>'
+        if (paginationDiv) paginationDiv.style.display = 'none'
+        return
+      }
+
+      // 填充表格数据
+      if (dataType === 'orders') {
+        pageData.forEach((order) => {
+          const row = document.createElement('tr')
+          row.innerHTML = `
+        <td>${order.service_content || order.service_type}</td>
+        <td>${order.quantity}</td>
+        <td>${order.address}</td>
+        <td>${order.staff}</td>
+        <td>${order.created_at ? new Date(order.created_at).toLocaleString() : '未知时间'}</td>
+        <td>
+          <button class="action-btn delete-order" data-id="${order.id}">删除</button>
+        </td>
+      `
+          tableBody.appendChild(row)
+        })
+      } else {
+        pageData.forEach((favorite) => {
+          const row = document.createElement('tr')
+          row.innerHTML = `
+        <td>${favorite.service_content || '无内容'}</td>
+        <td>${favorite.quantity || 1}</td>
+        <td>${favorite.address || '无地址'}</td>
+        <td>${favorite.staff || '无人员'}</td>
+        <td>${favorite.created_at ? new Date(favorite.created_at).toLocaleString() : '未知时间'}</td>
+        <td>
+          <button class="action-btn edit-favorite" data-id="${favorite.id}">修改</button>
+          <button class="action-btn delete-favorite" data-id="${favorite.id}">删除</button>
+          <button class="action-btn order-favorite" data-id="${favorite.id}">下单</button>
+        </td>
+      `
+          tableBody.appendChild(row)
+        })
+      }
+
+      console.log('当前页数据:', pageData)
+      console.log('当前页码:', state.currentPage)
+      console.log('总页数:', state.totalPages)
+      console.log('每页项目数:', pageInfo)
+      // 更新分页信息
+      if (pageInfo) pageInfo.textContent = `${state.currentPage}/${state.totalPages}`
+      if (prevBtn) prevBtn.disabled = state.currentPage === 1
+      if (nextBtn) nextBtn.disabled = state.currentPage === state.totalPages
+      if (paginationDiv) {
+        paginationDiv.style.display = state.data.length > state.itemsPerPage ? 'block' : 'none'
+      }
+
+      // 重新绑定事件
+      bindTableEvents(dataType)
+    }
+
+    // 绑定表格事件
+    function bindTableEvents(dataType) {
+      if (dataType === 'orders') {
+        document.querySelectorAll('.delete-order').forEach(btn => {
+          btn.addEventListener('click', async function () {
+            const orderId = this.dataset.id
+            try {
+              await deleteOrder(orderId)
+              loadOrders()
+            } catch (error) {
+              console.error('删除订单失败:', error)
+              alert('删除订单失败: ' + error.message)
+            }
+          })
+        })
+      } else {
+        document.querySelectorAll('.delete-favorite').forEach(btn => {
+          btn.addEventListener('click', async function () {
+            const favoriteId = this.dataset.id
+            try {
+              await deleteFavorite(favoriteId)
+              loadFavorites()
+            } catch (error) {
+              console.error('删除收藏失败:', error)
+              alert('删除收藏失败: ' + error.message)
+            }
+          })
+        })
+
+        document.querySelectorAll('.order-favorite').forEach(btn => {
+          btn.addEventListener('click', async function () {
+            const favoriteId = this.dataset.id
+            try {
+              await orderFromFavorite(favoriteId)
+            } catch (error) {
+              console.error('从收藏下单失败:', error)
+              alert('从收藏下单失败: ' + error.message)
+            }
+          })
+        })
+
+        document.querySelectorAll('.edit-favorite').forEach(btn => {
+          btn.addEventListener('click', async function () {
+            const favoriteId = this.dataset.id
+            try {
+              await editFavorite(favoriteId)
+            } catch (error) {
+              console.error('编辑收藏失败:', error)
+              alert('编辑收藏失败: ' + error.message)
+            }
+          })
+        })
+      }
+    }
+
+  </script>
+</body>
+
+</html>

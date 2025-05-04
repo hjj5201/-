@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情暖老人心--登录</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" href="注册页面2.css">
+  <link rel="stylesheet" href="登录页面.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css">
+</head>
+
+<body>
+  <!-- 登录头部 -->
+  <div class="xtx-login-header">
+    <h1 class="logo"></h1>
+    <a class="home" href="1.首页.html">进入网站首页>></a>
+  </div>
+  <!-- 登录内容 -->
+  <div class="xtx-login-main">
+    <div class="wrapper">
+
+      <form action="" autocomplete="off">
+        <div class="box">
+          <div class="tab-nav">
+            <a href="javascript:;" class="active" data-id="0">账户登录</a>
+          </div>
+          <div class="tab-pane">
+            <div class="input">
+              <span class="iconfont icon-zhanghao"></span>
+              <input required type="text" placeholder="请输入用户名称/手机号码" name="username">
+              <div class="error-message" id="username-error"></div>
+            </div>
+            <div class="input">
+              <span class="iconfont icon-suo"></span>
+              <input required type="password" placeholder="请输入密码" name="password">
+              <div class="error-message" id="password-error"></div>
+            </div>
+            <div class="agree">
+              <label for="my-checkbox">
+                <input type="checkbox" value="1" id="my-checkbox" class="remember" name="agree">
+                <span class="iconfont icon-xuanze"></span>
+              </label>
+              我已同意 <a href="javascript:;">《服务条款》</a href="javascript:;"> 和 <a>《服务条款》</a>
+            </div>
+            <div class="button clearfix">
+              <button type="submit" class="dl">登 录</button>
+              <a class="fl" href="./forget.html">忘记密码？</a>
+              <a class="fr" href="2.注册页面.html">免费注册</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- 登录底部 -->
+  <div class="xtx-login-footer">
+    <!-- 版权信息 -->
+    <div class="copyright">
+      <p>
+        <a href="1.首页.html">进入首页</a>
+        <a href="6.个人中心.html">免费注册</a>
+        <a href="7.帮助中心.html">服务活动</a>
+        <a href="javascript:;">健康管理</a>
+      </p>
+      <p>&lt;&nbsp;情暖老人心&nbsp;&gt;</p>
+    </div>
+  </div>
+
+  <script>
+
+
+    const form = document.querySelector('form')
+    const agree = document.querySelector('[name=agree]')
+    const usernameInput = document.querySelector('[name=username]')
+    const passwordInput = document.querySelector('[name=password]')
+    const usernameError = document.getElementById('username-error')
+    const passwordError = document.getElementById('password-error')
+
+    // 清除错误状态
+    function clearErrors() {
+      usernameInput.classList.remove('error')
+      passwordInput.classList.remove('error')
+      usernameError.textContent = ''
+      passwordError.textContent = ''
+    }
+
+
+    // 表单提交处理
+    document.querySelector('form').addEventListener('submit', async function (e) {
+      e.preventDefault()
+
+      // 获取表单值
+      const phoneOrUsername = document.querySelector('[name=username]').value.trim()
+      const password = document.querySelector('[name=password]').value
+
+      // 清除之前的错误提示
+      clearErrors()
+
+      // 简单前端验证
+      if (!agree.checked) {
+        return alert('请勾选同意协议')
+      }
+      if (!phoneOrUsername) {
+        usernameInput.classList.add('error')
+        usernameError.textContent = '请输入用户名或手机号'
+        return
+      }
+
+      if (!password) {
+        passwordInput.classList.add('error')
+        passwordError.textContent = '请输入密码'
+        return
+      }
+
+      try {
+        // 显示加载状态
+        const submitBtn = this.querySelector('button[type="submit"]')
+        submitBtn.disabled = true
+        submitBtn.textContent = '登录中...'
+
+        // 发送登录请求
+        const response = await fetch('http://localhost:3001/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            phone: document.querySelector('[name=username]').value.trim(),
+            password: document.querySelector('[name=password]').value
+          }),
+          mode: 'cors'
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          // 显示后端返回的错误信息
+          const errorField = data.field === 'password' ? passwordInput : usernameInput
+          const errorElement = data.field === 'password' ? passwordError : usernameError
+
+          errorField.classList.add('error')
+          errorElement.textContent = data.message || '登录失败'
+          throw new Error(data.message || '登录失败')
+        }
+
+        // 登录成功处理
+        console.log('登录成功:', data)
+
+        // 存储token和用户信息
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('currentUser', JSON.stringify({
+          userName: data.user.userName,
+          phone: data.user.phone
+        }))
+        console.log('存储后的localStorage:', {
+          token: localStorage.getItem('token'),
+          currentUser: localStorage.getItem('currentUser')
+        })
+
+        // 显示成功提示
+        alert('登录成功！')
+
+        // 跳转到首页或其他页面
+        window.location.href = '1.首页.html'
+
+      } catch (error) {
+        console.error('登录失败:', error)
+
+        // 显示通用错误提示
+        if (!usernameInput.classList.contains('error')) {
+          usernameInput.classList.add('error')
+          usernameError.textContent = error.message || '登录失败，请重试'
+        }
+
+      } finally {
+        // 恢复按钮状态
+        const submitBtn = document.querySelector('button[type="submit"]')
+        if (submitBtn) {
+          submitBtn.disabled = false
+          submitBtn.textContent = '登录'
+        }
+      }
+    })
+
+    // 输入时清除错误状态
+    usernameInput.addEventListener('input', () => {
+      usernameInput.classList.remove('error')
+      usernameError.textContent = ''
+    })
+
+    passwordInput.addEventListener('input', () => {
+      passwordInput.classList.remove('error')
+      passwordError.textContent = ''
+    })
+
+  </script>
+</body>
+
+</html>
